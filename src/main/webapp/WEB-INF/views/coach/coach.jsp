@@ -135,11 +135,11 @@ function goModal(coachIdx) {
 	</div>
 		   
 	<!-- 코치 데이터 -->
-	<div>
-		<table>
+	<!-- <div>
+		<table> -->
 		<% ArrayList<Coach> list = (ArrayList<Coach>)request.getAttribute("list");%>
 		   <!-- 반복문을 통해서 코치 출력하기 -->
-		   <c:forEach var="vo" items="${ list }" varStatus="i">
+		   <!--<c:forEach var="vo" items="${ list }" varStatus="i">
 		      <tr>
 		          <td>${ vo.coachIdx }</td>
 		          <td>${ vo.name }</td> 
@@ -151,25 +151,23 @@ function goModal(coachIdx) {
 		        </tr>
 		   </c:forEach>
 		</table>
-	</div>
+	</div> -->
 	
 	<!-- 카드 리스트 -->
-	<!-- <div id="app"></div>
-	<div id="banner_container" style="widht:100%; height:500px; overflow:hidden; position:relative;">
-		<div id="banner_wrapper" style="width:408px; position:absolute;">
+	<div id="app"></div>
+	<div id="banner_container" style="widht:100%; height:500px; position:relative;">
+		<div id="banner_wrapper" style="width:900px; /*position:absolute;*/">
 			<c:forEach var="vo" items="${ list }" varStatus="i">
-				<div class="card">
-					${ vo.coachIdx }<br>
-					${ vo.name }<br>
-					${ vo.region }<br>
-					${ vo.career }<br>
-					${ vo.beginDate }<br>
-					<img id="coachPicture" alt="" src="${contextPath}/resources/images/coPicture/${ vo.img }.jpg"><br>
-					<input onclick="goModal(${vo.coachIdx})" id="myBtn" type="button" value="선택하기">
+				<div class="card" onclick="goModal(${vo.coachIdx})">
+					<span class="coach-name">${ vo.name }</span><br>
+					<!-- ${ vo.region } -->
+					<span class="coach-career">${ vo.career }</span><br>
+					<!-- ${ vo.beginDate }<br> -->
+					<div class="coach-img"><img id="coachPicture" alt="" src="${contextPath}/resources/images/coPicture/${ vo.img }.jpg"></div><br>
 				</div>
 			</c:forEach>
 		</div>
-	</div> -->
+	</div>
 	
 	</div>
 	

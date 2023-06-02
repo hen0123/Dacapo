@@ -351,4 +351,37 @@ input[data-placeholder]::before {
 	width:240px;
 	height:425px;
 	background:#EDEDED;
+	float : left;
+	margin : 10px;
+	padding : 10px;
+	position : relative;
+}
+
+.coach-name {
+	font-family: 'TheJamsil';
+	font-weight : 400;
+	font-size : 30px;
+	color : #34347D;
+}
+
+.coach-career {
+	font-family: 'TheJamsil';
+	font-weight : 100;
+	font-size : 10px;
+	color : #34347D;
+}
+
+.coach-img {
+	background : red; /*transparent;*/
+	width : 200px;
+	height : 300px;
+	position : absolute;
+	top : 125px;
+	left : 40px;
+}
+
+.coach-img img{
+	width : 200px;
+	height : 300px;
+	vertical-align : bottom;
 }
