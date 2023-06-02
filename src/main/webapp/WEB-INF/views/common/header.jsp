@@ -31,7 +31,7 @@
 		 
 		<c:if test="${not empty mvo}">
 	      	<ul class="log">
-	        	<li><a href="${contextPath}/updateForm.do"><span class="glyphicon glyphicon-wrench"></span>마이페이지</a></li>
+	        	<li><a href="${contextPath}/memberModify.do"><span class="glyphicon glyphicon-wrench"></span>마이페이지</a></li>
 	      		<li><a href="${contextPath}/logout.do"><span class="glyphicon glyphicon-log-out"></span>로그아웃</a></li>
 	      	</ul>
 	      </c:if>

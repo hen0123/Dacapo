@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -227,5 +228,20 @@ public class MemberController {
 		return "member/joinForm";
 	}
 	
+	// 정보수정 페이지 이동 요청
+	 @RequestMapping("/memberModify.do")
+	 public String memModify() {
+	    return "member/memberModify";
+	 }
+	 
+	// 회원탈퇴 기능
+	   @RequestMapping("/memDelete.do/{memID}")
+	   public String memDelete(@PathVariable("memID") String memID, HttpSession session) {
+	      
+	      memberMapper.memDelete(memID);
+	      session.invalidate();
+	      
+	      return "redirect:/";
+	   }
 	
 }
