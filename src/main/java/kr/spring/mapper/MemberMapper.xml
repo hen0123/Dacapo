@@ -31,6 +31,9 @@
 	
 	<select id="getMember" parameterType="String" resultType="kr.spring.entity.Member">
 		select * from member where memID = #{memID}
-		
 	</select>
+	
+	<delete id="memDelete" parameterType="String">
+      delete from member where memID = #{memID}
+   	</delete>
 </mapper>

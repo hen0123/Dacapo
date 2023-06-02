@@ -38,11 +38,22 @@
     var i = 0;
     function requestPay() {
     	
+    	// pay테이블 payDate 컬럼의 날짜 데이터 생성
+        let today = new Date();   
+
+        let year = today.getFullYear().toString(); // 년도
+        let month = (today.getMonth()+1).toString() ;  // 월
+        let date = today.getDate().toString();  // 날짜
+        let hours = today.getHours().toString(); // 시
+        let minutes = today.getMinutes().toString();  // 분
+        
+        let payDate = year+"/"+month+"/"+date+" "+hours+":"+minutes;
+    	
          IMP.request_pay(
         {
           pg: "T5102001",
           pay_method: "card",
-          merchant_uid: "merchant1"+i,
+          merchant_uid: "merchant47"+i,
           name: "이름 : 테스트",
           amount: 10,
           buyer_email: "${memEmail}",
@@ -53,6 +64,15 @@
             console.log("성공");
             console.log(i);
             i++;
+            
+            let Fdata = {"amount" : rsp.paid_amount, "memID" : "${mvo.memID}", 
+                    "merchantName" : $("#modalNmae").text(), "payDate" : payDate}
+              $.ajax({
+                 url : "pay.do",
+                 type : "post",
+                 data : Fdata,
+                 erro : function(){ alert("error...") }
+              });
             
            } else {
             console.log("실패");

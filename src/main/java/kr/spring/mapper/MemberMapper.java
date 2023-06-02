@@ -19,4 +19,6 @@ public interface MemberMapper {
 
 	public Member getMember(String memID);
 
+	public void memDelete(String memID);
+
 }
