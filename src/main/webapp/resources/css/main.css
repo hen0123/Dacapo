@@ -348,13 +348,12 @@ input[data-placeholder]::before {
 
 /* 코치매칭-코치리스트 */
 .card {
-	width:240px;
-	height:425px;
-	background:#EDEDED;
+	width:220px;
+	height:360px;
+	background : transparent;
 	float : left;
-	margin : 10px;
-	padding : 10px;
 	position : relative;
+	overflow : hidden;
 }
 
 .coach-name {
@@ -364,24 +363,61 @@ input[data-placeholder]::before {
 	color : #34347D;
 }
 
+.coach-title {
+	font-family: 'TheJamsil';
+	font-weight : 400;
+	font-size : 12px;
+	color : #303030;
+}
+
 .coach-career {
 	font-family: 'TheJamsil';
 	font-weight : 100;
 	font-size : 10px;
-	color : #34347D;
+	color : #303030;
+}
+
+#content {
+	padding : 3px;
+	width : 200px;
+	height : 75px;
+	background : rgb(255, 255, 255, 0.5);
+	text-overflow: ellipsis;
+	line-height: 1.2;
+	text-align : left;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+	overflow : hidden;
+	z-index : 999;
+	position:relative;
+	margin-top : 225px;
+}
+
+.coach-container {
+	margin : 10px;
 }
 
 .coach-img {
-	background : red; /*transparent;*/
-	width : 200px;
-	height : 300px;
+	background : transparent; /*transparent;*/
+	width : 100%;
+	height : 100%;
 	position : absolute;
-	top : 125px;
-	left : 40px;
+	left : 20px;
+	top : 60px;
 }
 
 .coach-img img{
-	width : 200px;
-	height : 300px;
+	min-width : 100%;
+	max-width : 250px;
+	height : 320px;
 	vertical-align : bottom;
+	filter: grayscale(100%);
+}
+
+/* 카드 캐러셀 */
+
+.card-carousel {
+	align-items : center;
+	position : relative;
 }

@@ -10,6 +10,7 @@
 <!-- 부스스트랩 -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/main.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -123,6 +124,50 @@ function goModal(coachIdx) {
        };
        
  <!-- 리스트스크립 -->
+ 
+ function shiftLeft() {
+	 const boxes = document.querySelectorAll(".box");
+	 const tmpNode = boxes[0];
+	 boxes[0].className = "box move-out-from-left";
+	 setTimeout(function() {
+	     if (boxes.length > 5) {
+	         tmpNode.classList.add("box--hide");
+	         boxes[5].className = "box move-to-position5-from-left";
+	     }
+	     boxes[1].className = "box move-to-position1-from-left";
+	     boxes[2].className = "box move-to-position2-from-left";
+	     boxes[3].className = "box move-to-position3-from-left";
+	     boxes[4].className = "box move-to-position4-from-left";
+	     boxes[0].remove();
+	     document.querySelector(".cards__container").appendChild(tmpNode);
+	 }, 500);
+	 }
+	 function shiftRight() {
+	 const boxes = document.querySelectorAll(".box");
+	 boxes[4].className = "box move-out-from-right";
+	 setTimeout(function() {
+	     const noOfCards = boxes.length;
+	     if (noOfCards > 4) {
+	         boxes[4].className = "box box--hide";
+	     }
+	     const tmpNode = boxes[noOfCards - 1];
+	     tmpNode.classList.remove("box--hide");
+	     boxes[noOfCards - 1].remove();
+	     let parentObj = document.querySelector(".cards__container");
+	     parentObj.insertBefore(tmpNode, parentObj.firstChild);
+	     tmpNode.className = "box move-to-position1-from-right";
+	     boxes[0].className = "box move-to-position2-from-right";
+	     boxes[1].className = "box move-to-position3-from-right";
+	     boxes[2].className = "box move-to-position4-from-right";
+	     boxes[3].className = "box move-to-position5-from-right";
+	 }, 500);
+	 }
+	 
+	 
+</script>
+
+<script type="text/javascript">
+$("#place option:selected").val();
 </script>
 <body>
 
@@ -153,40 +198,34 @@ function goModal(coachIdx) {
 		   </select>
 		</form>
 	</div>
-		   
-	<!-- 코치 데이터 -->
-	<!-- <div>
-		<table> -->
-		<% ArrayList<Coach> list = (ArrayList<Coach>)request.getAttribute("list");%>
-		   <!-- 반복문을 통해서 코치 출력하기 -->
-		   <!--<c:forEach var="vo" items="${ list }" varStatus="i">
-		      <tr>
-		          <td>${ vo.coachIdx }</td>
-		          <td>${ vo.name }</td> 
-		          <td>${ vo.region }</td>
-		          <td>${ vo.career }</td>
-		          <td>${ vo.beginDate }</td>
-		          <td><img id="coachPicture" alt="" src="${contextPath}/resources/images/coPicture/${ vo.img }.jpg"></td>
-		          <td><input onclick="goModal(${vo.coachIdx})" id="myBtn" type="button" value="선택하기"></td>
-		        </tr>
-		   </c:forEach>
-		</table>
-	</div> -->
 	
 	<!-- 카드 리스트 -->
-	<div id="app"></div>
-	<div id="banner_container" style="widht:100%; height:500px; position:relative;">
-		<div id="banner_wrapper" style="width:900px; /*position:absolute;*/">
-			<c:forEach var="vo" items="${ list }" varStatus="i">
-				<div class="card" onclick="goModal(${vo.coachIdx})">
-					<span class="coach-name">${ vo.name }</span><br>
-					<!-- ${ vo.region } -->
-					<span class="coach-career">${ vo.career }</span><br>
-					<!-- ${ vo.beginDate }<br> -->
-					<div class="coach-img"><img id="coachPicture" alt="" src="${contextPath}/resources/images/coPicture/${ vo.img }.jpg"></div><br>
-				</div>
-			</c:forEach>
+	<div id="container">
+	<div id="banner_container" style="widht:300px; height:500px;">
+	<div class="button" onclick="shiftLeft()"><img src="https://image.ibb.co/mRsEb7/left_arrow.png" alt=""></div>
+		<div class="card-carousel" id="banner_wrapper" style="width:900px;/*position:absolute;*/">
+			<% ArrayList<Coach> list = (ArrayList<Coach>)request.getAttribute("list");%>
+			<!-- 반복문을 통해서 코치 출력하기 -->
+			<ul class="cards__container">
+				<c:forEach var="vo" items="${ list }" varStatus="i">
+					<li class="box">
+					<div class="card" onclick="goModal(${vo.coachIdx})">
+						<div class="coach-container">
+						<span class="coach-name">${ vo.name }</span>
+						<!-- ${ vo.region } -->
+						
+						</div>
+						<!-- ${ vo.beginDate }<br> -->
+						<div class="coach-img"><img id="coachPicture" alt="" src="${contextPath}/resources/images/coPicture/${ vo.img }"></div>
+						<div class="coach-container" id="content">
+						<span class="coach-title">경력</span><br><span class="coach-career">${ vo.career }</span>
+						</div>
+					</div>
+				</c:forEach>
+			</ul>
 		</div>
+	</div>
+	<div class="button" onclick="shiftRight()"><img src="https://image.ibb.co/dfPSw7/right_arrow.png" alt=""></div>
 	</div>
 	
 	</div>
@@ -231,8 +270,6 @@ function goModal(coachIdx) {
       
     </div>
 </div> 
-
-
    
 </body>
 </html>

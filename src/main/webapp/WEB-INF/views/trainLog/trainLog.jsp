@@ -81,6 +81,7 @@
 				// test용(DB에 넣어도 됨)
 				{
                     title:'레슨 8시',
+                    description:'여의도 제발 예쁘게 나와주라',
                     start:'2023-06-14',
                     end:'2023-06-14',
                     color:'#AC7BD7'
@@ -88,6 +89,7 @@
                 
                 {
                     title:'경기 10시',
+                    description:'SSG vs 롯데',
                     start:'2023-06-24',
                     end:'2023-06-24',
                     color:'#FFCC99'
@@ -95,6 +97,7 @@
                 
                 {
                     title:'레슨 8시',
+                    description:'여의도',
                     start:'2023-06-07',
                     end:'2023-06-07',
                 	color:'#AC7BD7'    
@@ -174,16 +177,20 @@
             	}
             },
             
-            /* 마우스 오버 시 세부내용 팝업
-            eventRender: function(info) {
-                var tooltip = new Tooltip(info.el, {
-                  title: info.event.extendedProps.description,
-                  placement: 'top',
-                  trigger: 'hover',
-                  container: 'body'
-                });
-              }*/
-	    });	
+            /* 마우스 오버 시 세부내용 팝업 */
+            eventDidMount: function (info) {
+               
+            $(info.el).popover({
+                //title: info.event.title,
+                content: info.event.extendedProps.description, 
+                html:true,
+                placement: 'bottom',
+                trigger: 'hover',
+                container: 'body',
+	    		});	
+           },
+           
+	    });
 		
 	    // 달력 불러오기
 	    calendar.render();
