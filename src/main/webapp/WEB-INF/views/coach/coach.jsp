@@ -116,7 +116,7 @@ function goModal(coachIdx) {
                 
                 $("#modalRegion").text(data.region);
                 $("#modalImg").empty();
-                $("#modalImg").append("<img src='${contextPath}/resources/images/coPicture/"+ data.img +".jpg'>");
+                $("#modalImg").append("<img class='coach-modal-img' src='${contextPath}/resources/images/coPicture/"+ data.img +"'>");
                 
              },
              erro : function(){ alert("error") }
@@ -167,7 +167,9 @@ function goModal(coachIdx) {
 </script>
 
 <script type="text/javascript">
-$("#place option:selected").val();
+   $(function(){
+      $("#place").val("${param.region}").attr("selected","selected");
+   });
 </script>
 <body>
 
@@ -188,21 +190,21 @@ $("#place option:selected").val();
 		<p>어디에서 수업할까요?</p>
 		<i class="fa-solid fa-location-dot fa-xl"></i>
 		<form action="${contextPath}/regionSerch.do" method="post">
-			<select name="region" id="place" onchange="this.form.submit()">
-				<option value="">선택</option>
+			<select name="region" id="place" onchange="this.form.submit()" placeholder="선택">
+				<option value="" disabled selected>선택</option>
+				<option value="전체">전체</option>
 				<option value="노원">노원</option>
 				<option value="강남">강남</option>
 				<option value="송파">송파</option>
 				<option value="용산">용산</option>
-				<option value="전체">전체</option>
 		   </select>
 		</form>
 	</div>
 	
 	<!-- 카드 리스트 -->
 	<div id="container">
-	<div id="banner_container" style="widht:300px; height:500px;">
-	<div class="button" onclick="shiftLeft()"><img src="https://image.ibb.co/mRsEb7/left_arrow.png" alt=""></div>
+	<div id="banner_container" style="widht:300px; height:500px; margin-top:-300px;">
+	<div class="button" onclick="shiftRight()" id="left-button"></div>
 		<div class="card-carousel" id="banner_wrapper" style="width:900px;/*position:absolute;*/">
 			<% ArrayList<Coach> list = (ArrayList<Coach>)request.getAttribute("list");%>
 			<!-- 반복문을 통해서 코치 출력하기 -->
@@ -225,7 +227,7 @@ $("#place option:selected").val();
 			</ul>
 		</div>
 	</div>
-	<div class="button" onclick="shiftRight()"><img src="https://image.ibb.co/dfPSw7/right_arrow.png" alt=""></div>
+	<div class="button" onclick="shiftLeft()" id="right-button"></div>
 	</div>
 	
 	</div>
@@ -235,37 +237,35 @@ $("#place option:selected").val();
 	
 </div>
 	
-	
 <!-- 푸터 -->	
 <jsp:include page="../common/footer.jsp"></jsp:include>
 
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-center">
     
       <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header" style="padding:35px 50px;">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4>코치</h4>
+      <div class="coach-modal-content">
+        <div style="height:30px; padding:15px;">
+          <button type="button" class="close" data-dismiss="modal" style="color:#34347D;">&times;</button>
         </div>
         
-        <div id="modalNmae" class="modal-body" style="padding:40px 50px;">
+        <div class="coach0">
+	        <div class="#">
+		        <div class="modalImg-size"><p id="modalImg"></p>
+	        	</div>
+	        </div>
+	        <div class="coach-modal-body">
+	        	<div id="modalNmae"></div>
+	        </div>
+	        <div class="coach-modal-body">
+	        	 <div id="modalCareer"></div>
+	        	 <div>
+          			 <button onclick="requestPay()" type="button" style="width : 200px; height : 60px;">코칭신청하기</button>
+       			 </div>
+	        </div>
         </div>
-                 
-        <div id="modalCareer" class="modal-body" style="padding:40px 50px;">
-        </div>
-        
-        <div id="modalImg" class="modal-body" style="padding:40px 50px;">
-        </div>
-        
-        
-        <div>
-           <button onclick="requestPay()" type="button" class="btn btn-success btn-block">결제하기</button>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-        </div>
+    
       </div>
       
     </div>

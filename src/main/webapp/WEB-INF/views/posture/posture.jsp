@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>라인드라이브</title>
 <link rel="stylesheet" href="resources/css/main.css">
 </head>
 <body>
@@ -18,7 +18,21 @@
 		
 	<!-- 메인공간 -->
 	<div class="item">
-		<p>여기는 자세진단 페이지다.</p>
+	<p class="title">자세진단</p>
+	
+	<div id="posture-body">
+		<div class="upload-container">
+			<div class="upload"><span class="upload-text">영상업로드</span></div>
+			<button>진단하기</button>
+		</div>
+		<div class="sign-container">
+			<p id="header">!동영상 촬영 기준</p>
+			첫번째, <span class="point">카메라는 측면상태</span>로.<br>두번째, <span class="point">대기자세부터 팔로우까지 촬영</span>해주세요.
+			<p id="bottom">영상을 업로드하면 AI가 자세를 진단해줍니다.</p>
+		</div>
+			
+	</div>
+	
 	</div>  
 		
 	<!-- 우측 여백 -->
