@@ -18,6 +18,7 @@
 		
 	<!-- 메인공간 -->
 	<div class="item">
+
 	<p class="title">자세진단</p>
 	
 	<div id="posture-body">
@@ -32,7 +33,7 @@
 		</div>
 			
 	</div>
-	
+
 	</div>  
 		
 	<!-- 우측 여백 -->
