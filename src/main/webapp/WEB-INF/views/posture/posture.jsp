@@ -19,6 +19,7 @@
 	<!-- 메인공간 -->
 	<div class="item">
 		<p>여기는 자세진단 페이지다.</p>
+		<button onClick="location.href='http://127.0.0.1:5000'">자세진단 업로드</button>
 	</div>  
 		
 	<!-- 우측 여백 -->
