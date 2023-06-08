@@ -2,6 +2,39 @@
 -- 인덱스는 넣어주는 것이 좋다!
 -- 오토인크리먼트는 프라이먼트이여만 한다.
 
+-- 로그 테이블 생성
+-- 훈련 로그 테이블 생성
+create table log (
+   logIdx int not null auto_increment,
+   logDate varchar(20) not null,
+   logMemo varchar(200) not null,
+   memID varchar(20) not null,
+   FOREIGN KEY (memID) REFERENCES member (memID) ON DELETE CASCADE,
+   primary key(logIdx)
+);
+
+select * from log;
+
+drop table log;
+
+insert into log(logDate, logMemo, memID) 
+values('2023-06-07', '디비 끊어졌다.(06.07)1', 'a');
+
+insert into log(logDate, logMemo, memID) 
+values('2023-06-07', '디비 끊어졌다.(06.07)2', 'a');
+
+insert into log(logDate, logMemo, memID) 
+values('2023-06-08', '목요일이다.(06.08)1', 'a');
+
+insert into log(logDate, logMemo, memID) 
+values('2023-06-08', '목요일이다.(06.08)2', 'a');
+
+insert into log(logDate, logMemo, memID) 
+values('2023-06-09', '금요일이다.(06.09)1', 'a');
+
+insert into log(logDate, logMemo, memID) 
+values('2023-06-09', '금요일이다.(06.09)2', 'a');
+
 -- 코치 테이블 생성
 create table coach (
    coachIdx int not null auto_increment,

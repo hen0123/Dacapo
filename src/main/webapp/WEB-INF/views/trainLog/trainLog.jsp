@@ -199,11 +199,13 @@
                 });
 			},
 			
+			
 			dateClick: function(info) {
-			    console.log("데이트클릭 작동 됨.");
-			    console.log(info.dateStr);
 	            
-	            dData = {"logDate" : info.dateStr, "memID" : "${memID}"};
+				console.log("아이고");
+	            console.log(info.dateStr);
+	            
+	            dData = {"logDate" : info.dateStr, "memID" : "${mvo.memID}"};
 	            
 	            $.ajax({
 	                    url : "${contextPath}/oneTrainLog",
@@ -213,7 +215,37 @@
 	                    success : getLog,
 	                    error : function(){ alert("error") }
 	            });
-			    
+	                    
+	            function getLog(data) {
+	               
+	               $("#calendar").hide();
+	               
+	               /* $.each(data, function(index, obj){
+	                      console.log(obj.logMemo);
+	                      $("#logData").append(obj.logMemo);
+	                   }); */
+	                   let listHtml = "<span style='border:1px solid black;'>전체 스윙통계 넣어줘야함</span><br>";
+	                   listHtml += "<span style='border:1px solid black;'>오늘의 스윙횟수 넣어줘야함</span><br>";
+	                   listHtml += "<span style='border:1px solid black;'>오늘의 평균점수 넣어줘야함</span><br>";
+	                   listHtml += "<span style='border:1px solid black;'>오늘의 최고점수 넣어줘야함</span><br>";
+	                   listHtml += "<span style='border:1px solid black;'>오늘의 사진 넣어줘야함</span><br>";
+	                   
+	                   listHtml += "<button onclick='MemoWrite()'>작성하기</button>"
+	                   listHtml += "<span style='border:1px solid black;'>";
+	                   listHtml += "<input id='write' type='text' value='아아아' readonly>";
+	                   listHtml += "</span>";
+	                   
+	                   
+	                    
+	                  $("#logData").html(listHtml);
+	                  $("#logData").css("display","block");
+	                  
+	                   
+	                   
+	                   
+	                   
+	                   
+	            }
 			},
             
             /* 마우스 오버 시 세부내용 팝업 */
@@ -336,6 +368,11 @@
     
 <!-- 푸터 -->	
 <jsp:include page="../common/footer.jsp"></jsp:include>
+
+<!-- 훈련로그 창 -->
+<div id="logData" style="display: none;">
+
+</div>
 
 </body>
 </html>
