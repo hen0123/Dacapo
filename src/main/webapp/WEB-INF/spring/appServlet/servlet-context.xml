@@ -23,7 +23,9 @@
 	</beans:bean>
 	
 	<!-- 핸들러 매핑이 POJO(Controller)을 찾을때 아래에 작성한 패키지에서만 찾겠다. -->
-	<context:component-scan base-package="kr.spring.controller" />
+	<context:component-scan base-package="kr.spring.**" />
+	
+	<default-servlet-handler />
 	
 	
 	

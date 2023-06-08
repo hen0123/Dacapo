@@ -61,7 +61,6 @@ body { margin : 0; }
 	margin-bottom : 10px;
 }
 
-
 .join-form label {
 	font-size : 15px;
 	font-weight : bold;
@@ -121,6 +120,60 @@ body { margin : 0; }
 	background : #34347D;
 	margin-top : 50px;
 }
+
+/* 로그인 */
+
+.login-form {
+	text-align : center;
+	margin : 0 auto;	
+	padding-top : 50px;
+}
+
+.login-form .login-title {
+	font-size : 15px;
+	font-weight : bold;
+	line-height : 1.5em;
+	color : #34347D;
+	margin-top : 50px;
+}
+
+.login-form i {
+	color : #EDEDED;
+	position : relative;
+	bottom : 25px;
+	left : -105px;
+}
+
+.login-text{
+	text-align : center;
+	width : 250px;
+	height : 30px;
+	border : 2px solid #EDEDED;
+	border-radius : 5px;
+	padding : 5px 20px 5px 20px;
+	margin : 0;
+	box-sizing : border-box;
+}
+
+.login-form input::placeholder {
+	font-family : 'TheJamsil';
+    font-weight : 100;
+    font-size : 15px;
+    line-height : 2;
+}
+
+.login-form #password-input {
+	position : relative;
+	top : -20px;
+}
+
+#userLogin {
+	width : 255px;
+	height : 35px;
+	color : #fff;
+	background : #34347D;
+}
+
 
 /* 메인-버튼 */
 
@@ -474,11 +527,11 @@ select option[value=""][disabled] {
 }
 
 .coach-img img {
-	min-width : 100%;
-	max-width : 250px;
 	height : 320px;
 	vertical-align : bottom;
 	filter: grayscale(100%);
+	object-fit : contain;
+
 }
 
 .coach-img img:hover {
@@ -505,24 +558,72 @@ select option[value=""][disabled] {
 	border-radius : 5px;
 	position: relative;
 	margin : 0 auto;
+	margin-top : 150px;
+	filter : drop-shadow(5px 5px 10px #3D3D3D);
 }
 
 .modalImg-size {
 	width : 330px;
-	height : 180px;
+	height : 100px;
 	background : #34347D;
 	position: absolute;
-	top : 300px;
+	top : 320px;
 	left : 15px;
+	text-align:center;
 }
 
 .coach-modal-img {
 	object-fit : contain;
-	height : 450px;
-	position: absolute;
-	bottom : 0;
+	height : 400px;
+	position: relative;
+	bottom : 300px;
+	margin : 0 auto;
+	text-align : center;
 }
 
 .coach-modal-body {
 	margin-left : 45%;
+	font-family: 'TheJamsil';
+	font-size : 15px;
+	color : #757575;
+}
+
+.coach-modal-body #modalNmae{
+	font-weight : 400;
+	font-size : 45px;
+	color : #34347D;
+	line-height : 80px;
+}
+
+.coach-modal-body span {
+	color : #34347D;
+	font-size : 20px;
+}
+
+.coach-modal-body #modalCareer{
+	margin-left : 20px;
+}
+
+.coach-modal button {
+	-webkit-appearance : none;
+	-moz-appearance : none;
+	appearance : none;
+	border : 0;
+	border-radius : 5px;
+	background : #34347D;
+	width : 210px;
+	height : 50px;
+	position: absolute;
+	right : 30px;
+	bottom : 30px;
+	
+	font-size : 30px;
+	font-weight : 200; 
+	color : #fff;
+	
+}
+
+.coach-modal button:hover {
+	background : #AA1D20;
+	filter:drop-shadow(5px 5px 10px gray);
 }

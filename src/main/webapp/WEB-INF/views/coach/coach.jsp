@@ -250,7 +250,7 @@ function goModal(coachIdx) {
           <button type="button" class="close" data-dismiss="modal" style="color:#34347D;">&times;</button>
         </div>
         
-        <div class="coach0">
+        <div class="coach-modal">
 	        <div class="#">
 		        <div class="modalImg-size"><p id="modalImg"></p>
 	        	</div>
@@ -259,9 +259,10 @@ function goModal(coachIdx) {
 	        	<div id="modalNmae"></div>
 	        </div>
 	        <div class="coach-modal-body">
+	        	<span>◆경력</span>
 	        	 <div id="modalCareer"></div>
 	        	 <div>
-          			 <button onclick="requestPay()" type="button" style="width : 200px; height : 60px;">코칭신청하기</button>
+          			 <button onclick="requestPay()" type="button">코칭신청하기</button>
        			 </div>
 	        </div>
         </div>

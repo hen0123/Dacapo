@@ -6,10 +6,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>라인드라이브</title>
+<link rel="stylesheet" href="resources/css/main.css">
+<script src="https://kit.fontawesome.com/e257908efc.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+@font-face {
+    font-family: 'TheJamsil';
+    font-weight: 300;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/TheJamsil/TheJamsil-Light.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/TheJamsil/TheJamsil-Light.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/TheJamsil/TheJamsil-Light.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/TheJamsil/TheJamsil-Light.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/TheJamsil/TheJamsil-Light.ttf') format("truetype");
+    font-display: swap;
+}
+
+body {
+    margin : 0 auto;
+    text-align : center;
+}
+</style>
 </head>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -22,8 +42,6 @@
 	})
 </script>
 <body>
-<!-- 헤더 -->
-<jsp:include page="../common/header.jsp"></jsp:include>
 
 <!-- 바디 -->
 <div class="container">
@@ -32,52 +50,33 @@
 		
 	<!-- 메인공간 -->
 	<div class="item">
-		<a href="${contextPath}"><img src="resources/images/Linedrive_Logo.png"></a>
-	  		<div class="panel-heading">로그인</div>
-	  		<div class="panel-body">
+	
+	<div class="login-form">
+		<a href="${contextPath}"><img src="resources/images/Linedrive_Logo.png" style="width:200px; height:200px;"></a>
+	  		<div class="login-title">로그인</div>
+	  		
 	  			<form action="${contextPath}/login.do" method="post">
-	  				<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd;">
-	  					<tr>
-	  						<td style="width: 110; vertical-align: middle;">아이디</td>
-	  						<td><input required="required" type="text" id="memID" name="memID" class="form-control" placeholder="아이디를 입력하세요." maxlength="20"></td>
-	  					</tr>
-	  					<tr>
-	  						<td style="width: 110; vertical-align: middle;">비밀번호</td>
-	  						<td colspan="2"><input required="required" id="memPassword1" type="password" name="memPassword" class="form-control" placeholder="비밀번호를 입력하세요." maxlength="20"></td>
-	  					</tr>
-	  					<tr>
-	  						<td colspan="3">
-	  							<span id="passMessage"></span>
-	  							<input type="submit" class="btn btn-primary btn-sm pull-right" value="등록">
-	  						</td>
-	  					</tr>
-	  				</table>
+	  				<div class="formEmpty">
+	  					<input required="required" type="text" id="memID" name="memID" class="login-text" placeholder="아이디를 입력하세요." maxlength="20">
+	  					<br><i class="fa-solid fa-user" id="memIDicon"></i>
+	  				</div>
+	  				<div class="formEmpty" id="password-input">
+	  					<input required="required" id="memPassword1" type="password" name="memPassword" class="login-text" placeholder="비밀번호를 입력하세요." maxlength="20">
+	  					<br><i class="fa-solid fa-lock" id="memPassword1icon"></i>
+	  				</div>
+
+					<input type="submit" value="로그인" id="userLogin" class="formEmpty">
 	  			</form>
-	  		</div>	
-	  	</div>
-	</div>  
+	</div>
+	</div> 
 		
 	<!-- 우측 여백 -->
 	<div class="item"></div>
 </div>
-	
-<!-- 푸터 -->	
-<jsp:include page="../common/footer.jsp"></jsp:include>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	<!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  	<div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->

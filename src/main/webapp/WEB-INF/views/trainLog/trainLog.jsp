@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"></c:set>    <!-- src/main/webapp/WEB-INF/views -->    
+<%@ page import="java.util.*" %>
+<%@ page import="java.time.*" %>
+<%@ page import="kr.spring.entity.Diary" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,10 +68,7 @@
 			
 			// 날짜 클릭 시 이벤트 발생(테스트용으로 날짜 나오게 함) -> 훈련 로그 있으면 그 페이지로 이동하도록! 
 			// 페이지 이동 바로 어려우면 modal 창 만들어서 if문으로 없으면 없다 있으면 페이지 이동 
-			dateClick: function(info) {
-			    alert('훈련 기록이 없습니다.');
-			    
-			},
+			
 
 			selectable : true, 
 			// droppable : true,
@@ -76,32 +77,25 @@
 			// 일정 데이터 추가 , DB의 event를 가져오려면 JSON 형식으로 변환해 events에 넣어주면된다.
 			events:[ 
 				
-				// ajax로 데이터 불러옴(json형태)
-
-				// test용(DB에 넣어도 됨)
-				{
-                    title:'레슨 8시',
-                    description:'여의도 제발 예쁘게 나와주라',
-                    start:'2023-06-14',
-                    end:'2023-06-14',
-                    color:'#AC7BD7'
-                },
-                
-                {
-                    title:'경기 10시',
-                    description:'SSG vs 롯데',
-                    start:'2023-06-24',
-                    end:'2023-06-24',
-                    color:'#FFCC99'
-                },
-                
-                {
-                    title:'레슨 8시',
-                    description:'여의도',
-                    start:'2023-06-07',
-                    end:'2023-06-07',
-                	color:'#AC7BD7'    
-                }
+				<% ArrayList<Diary> list = (ArrayList<Diary>) request.getAttribute("list");%>
+	            <% if (!list.isEmpty()) { %>
+	               <% for (Diary vo : list) { %>
+	               {
+	                       title:'<%= vo.getDiaryTitle() %>',                  
+	                       description: '<%= vo.getDiaryContent() %>',
+	                       start:'<%= vo.getDiaryStart() %>',
+	                       
+	                       <% 
+	                          LocalDate localDate = LocalDate.parse(vo.getDiaryEnd()); 
+	                          LocalDate oneDayPlusLocalDate = localDate.plusDays(1);
+	                          String realEndDate = oneDayPlusLocalDate.toString();
+	                       %>
+	                       
+	                       end:'<%= realEndDate %>',
+	                       color:'<%= vo.getDiaryColor() %>'
+	                   },
+	               <% } %>
+	            <% } %>
             ],
 
             // 일정 추가
@@ -161,7 +155,7 @@
 	 
 	                            // 다음 일정 등록 전 데이터 비우기
 	                            // 없으면 연속 등록한 횟수만큼 일정이 등록됨
-	                            calendar.init();
+	                           
  
                             }
                         });
@@ -176,6 +170,51 @@
             		
             	}
             },
+            
+            eventAdd: function () {
+				console.log("이벤트에드 작동");
+				let title = $('#calendar_title').val();
+                let description = $('#calendar_content').val();
+                let start = $('#calendar_start_date').val();
+                let end = $('#calendar_end_date').val();
+                let color = $('input[name="calendar_color"]:checked').val();
+                
+                console.log(title);
+                console.log(description);
+                console.log(start);
+                console.log(end);
+                console.log(color);
+                console.log("${mvo.memID}");
+                
+                let fData = {"DiaryTitle":title, "DiaryContent":description, "DiaryStart":start,
+                      "DiaryEnd":end, "DiaryColor":color, "memID":"${mvo.memID}"};
+                
+                   
+                      
+                $.ajax({
+                      url : "${contextPath}/trainDiary",
+                      data : fData,
+                      method : "post",
+                      erro : function(){ alert("error") }
+                });
+			},
+			
+			dateClick: function(info) {
+			    console.log("데이트클릭 작동 됨.");
+			    console.log(info.dateStr);
+	            
+	            dData = {"logDate" : info.dateStr, "memID" : "${memID}"};
+	            
+	            $.ajax({
+	                    url : "${contextPath}/oneTrainLog",
+	                    data : dData,
+	                    dataType : "json",
+	                    method : "get",
+	                    success : getLog,
+	                    error : function(){ alert("error") }
+	            });
+			    
+			},
             
             /* 마우스 오버 시 세부내용 팝업 */
             eventDidMount: function (info) {

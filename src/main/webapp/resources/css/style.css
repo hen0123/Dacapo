@@ -67,8 +67,6 @@
     z-index: -1;
 }
 
-
-
 .box:nth-child(4n + 1) {
     transform: scale(0.5);
     z-index: -2;

@@ -5,12 +5,105 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- 부스스트랩 -->
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="resources/css/style.css">
+<link rel="stylesheet" href="resources/css/main.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title>라인드라이브</title>
+
+<!-- 회원탈퇴 스크립트 -->
+<script>
+	function showPopup() {
+		if (confirm("정말 탈퇴하시겠습니까?")) {
+			alert("탈퇴 되었습니다.");
+			// 확인 버튼을렀을 때 실행할 코드를 여기에 작성하세요.
+			window.location.href = "${contextPath}/memDelete.do/${mvo.memID}"
+			} else {
+				alert("취소 되었습니다.");
+				// 취소 버튼을 눌렀을 때 실행할 코드를 여기에 작성하세요.
+				}
+		}
+</script>
+
 </head>
 <body>
-<a href="${contextPath}/updateForm.do">회원정보수정</a><br>
-<a href="${contextPath}/memDelete.do/${mvo.memID}">회원탈퇴</a><br>
-<a href="${contextPath}/payHistory.do/${mvo.memID}">결제내역</a>
+
+<!-- 스타일 -->
+<style>
+table {
+	border-collapse: separate !important;
+	border-spacing: 100px 0px !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+h3 {
+	margin-bottom: 20px !important;
+}
+p {
+	color: #34347D;
+	margin-top: 0px !important;
+	margin-bottom: 5px !important;
+	text-align: center;
+}
+</style>
+
+<!-- 헤더 -->
+<jsp:include page="../common/header.jsp"></jsp:include>
+
+<div class="item" style="margin-left: 20%;">
+	<p1 class="title">내정보</p1>
+</div><br><br>
+
+<!-- 상단 테이블 -->
+<table style="border-radius: 15px; max-width: 850px; margin: auto; background-color: #EAEAEA">
+	<tr><td><br></td></tr>
+	<tr>
+	<td><img src='${contextPath}/resources/images/icon-mypage1.png' width="100" height="90"></td>
+	<td><img src='${contextPath}/resources/images/icon-mypage2.png' width="100" height="90"></td>
+	<td><img src='${contextPath}/resources/images/icon-mypage3.png' width="100" height="90"></td>
+	</tr>
+	<tr>
+	<th><p style="margin: 15px !important;" >최근진단</p></th>
+	<th><p style="margin: 15px !important;">스윙횟수</p></th>
+	<th><p style="margin: 15px !important;">훈련일수</p></th>
+	</tr>
+</table>
+<br>
+<div class="item" style="margin-left: 20%;">
+
+	<p1 class="title">메뉴</p1>
+</div><br><br>
+
+<!-- 하단 테이블 -->
+<table style="border-radius: 15px; max-width: 850px; margin: auto; background-color: #EAEAEA">
+	<tr>
+		<th><h3><p>회원정보</p></h3></th>
+		<th><h3><p>결제수단</p></h3></th>
+		<th><h3><p>부가서비스</p></h3></th>
+	</tr>
+	<tr>
+		<td><a href="${contextPath}/updateForm.do"><p>회원정보수정</p></a></td>
+		<td><p>결제수단추가</p></td>
+		<td><p>서비스신청</p></td>
+	</tr>
+	<tr>
+		<td><a onclick="showPopup();"><p style="color:#FF0000;">회원탈퇴</p></a></td>
+		<td><p>결제수단삭제</p></td>
+		<td><p>이용취소</p></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><a href="${contextPath}/payHistory.do/${mvo.memID}"><p>결제내역</p></td>
+	</tr>
+</table>
+
+<!-- 푸터 -->	
+<jsp:include page="../common/footer.jsp"></jsp:include>
+
 </body>
 </html>

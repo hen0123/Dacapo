@@ -53,7 +53,7 @@
 				<span class="button-sub">영상을 촬영하고 업로드하여<br>자세를 진단받아보세요</span>
 				</a>
 				
-				<a href="${contextPath}/trainLog" class="main-button item">
+				<a href="${contextPath}/trainLog/${mvo.memID}" class="main-button item">
 				<img src="resources/images/main/button2.png">
 				<span>훈련일지</span>
 				<span class="button-sub">나만의 훈련일지를<br>작성해보세요</span>

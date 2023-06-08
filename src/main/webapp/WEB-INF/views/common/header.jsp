@@ -18,7 +18,7 @@
 		<a href="${contextPath}"><img src="resources/images/Linedrive_Logo.png"></a>
 		<ul class="menu">
 			<li><a href="${contextPath}/posture">자세진단</a></li>
-			<li><a href="${contextPath}/trainLog">훈련일지</a></li>
+			<li><a href="${contextPath}/trainLog/${mvo.memID}">훈련일지</a></li>
 			<li><a href="${contextPath}/coach">코치매칭</a></li>
 		</ul>
 		
@@ -31,8 +31,8 @@
 		 
 		<c:if test="${not empty mvo}">
 	      	<ul class="log">
-	        	<li><a href="${contextPath}/memberModify.do"><span class="glyphicon glyphicon-wrench"></span>마이페이지</a></li>
-	      		<li><a href="${contextPath}/logout.do"><span class="glyphicon glyphicon-log-out"></span>로그아웃</a></li>
+	        	<li class="login"><a href="${contextPath}/memberModify.do"><i class="fa-regular fa-user fa-2x"></i></a></li>
+	      		<li class="login"><a href="${contextPath}/logout.do"><i class="fa-solid fa-right-from-bracket fa-2x"></i></a></li>
 	      	</ul>
 	      </c:if>
 	</nav>

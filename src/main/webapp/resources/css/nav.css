@@ -147,3 +147,11 @@ nav img {
 	width : 80px;
 	height : 80px;
 }
+
+.log .login i{
+	margin-top : 10px;
+}
+
+.log .login i:hover {
+	color: #AA1D20;
+}
