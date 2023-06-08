@@ -239,15 +239,19 @@
 	                   listHtml += "<div class='logData-memo'>";
 	                   listHtml += "<div class='logData-memo-sub'>";
 	                   listHtml += "<span class='logData-memo-title'>훈련내용</span><button onclick='MemoWrite()'>작성하기</button>";
-	                   listHtml += "<span style='border:1px solid black;'>";
+	                   listHtml += "<div class='textarea'>";
 	                   listHtml += "<textarea id='write' type='text' value='아아아' readonly></textarea>";
-	                   listHtml += "</span>";
+	                   listHtml += "</div>";
 	                   listHtml += "</div>"
 	                   listHtml += "<div class='logData-memo-sub'>";
-	                   listHtml += "<span style='border:1px solid black;'>오늘의 사진 넣어줘야함</span><br>";
+	                   listHtml += "<span class='logData-memo-title'>진단내용</span>";
+	                   listHtml += "<div class='logData-picture'>오늘의 사진 넣어줘야함</div>";
+	                   listHtml += "<div class='logData-coment'>피드백공간";
+	                   listHtml += "</div>";
 	                   listHtml += "</div>";
 	                   listHtml += "</div>";
 	                   
+	                   listHtml += "<div class='back-button'><a href='${contextPath}/trainLog/${mvo.memID}'>뒤로가기</a></div>";
 	                   listHtml += "</div>";
 	                    
 	                  $("#logData").html(listHtml);
@@ -471,9 +475,6 @@
 		}
 		
 		/* 훈련일기 */
-		#logData {
-		}
-		
 		.logData-container {
 			width : 100%;
 			height : 700px; 
@@ -502,6 +503,7 @@
 			border-radius : 5px;
 			color : #fff;
 			text-align : center;
+			padding : 10px;
 		}
 		.logData-trainLog .mini-container {
 			float : left;
@@ -511,24 +513,84 @@
 			border-radius : 5px;
 			text-align : center;
 			margin-left : 15px;
+			padding : 10px;
 		}
 		
 		.logData-memo {
-			maring-top : 50px;
+			margin-top : 40px;
 			widht : 100%;
 			height : 450px;
 		}
 		
 		.logData-memo-sub {
 			float : left;
-			marign : 10px 0;
 			width : 50%;
-			height : 100%;
+			height : 430px;
+			padding-left : 15px;
 		}
 		
-		.logData-memo-title{
+		.logData-memo-title {
+			font-size : 20px;
+			font-weight : 400;
+			color : #34347D;
 		}
 		
+		.logData-memo-sub button {
+			position : relative;
+			left : 270px;
+			background : transparent;
+			border : none;
+			color : #757575;
+		}
+		
+		.logData-memo-sub textarea {
+			width : 100%;
+			height : 370px;
+			border : none;
+			border-radius : 10px;
+			resize : none;
+			margin-top : 10px;
+		}
+		
+		.textarea {
+			marign-top : 20px;
+		}
+		
+		.logData-picture {
+			widht : 100%;
+			height: 200px;
+			background : gray;
+			margin-top : 10px;
+		}
+		
+		.logData-coment {
+			width : 100%;
+			height : 160px;
+			margin-top : 10px;
+			background : #FFD2D4;
+			border-radius : 10px;
+			padding : 10px;
+		}
+		
+		.back-button {
+			clear : both;
+			margin : 0 auto;
+			width : 100%;
+			height : 30px;
+			margin-top : -30px;
+			text-align : center;
+		}
+		
+		.back-button a {
+			color: #757575;
+			text-decoration: none;
+		}
+		
+		.back-button a:hover {
+			color: #AA1D20;
+			text-decoration: none;
+		}
+			
 	</style>
 
 
