@@ -411,6 +411,14 @@ input[data-placeholder]::before {
 	 transition: 0.7s;
 }
 
+/* 훈련일지-일일일지 */
+
+#logData {
+	width : 500px;
+	height : 500px; 
+	background :red;
+}
+
 /* 코치매칭-위치필터링 */
 
 select option[value=""][disabled] {

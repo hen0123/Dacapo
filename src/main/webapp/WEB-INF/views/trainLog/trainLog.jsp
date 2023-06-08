@@ -224,18 +224,31 @@
 	                      console.log(obj.logMemo);
 	                      $("#logData").append(obj.logMemo);
 	                   }); */
-	                   let listHtml = "<span style='border:1px solid black;'>전체 스윙통계 넣어줘야함</span><br>";
-	                   listHtml += "<span style='border:1px solid black;'>오늘의 스윙횟수 넣어줘야함</span><br>";
-	                   listHtml += "<span style='border:1px solid black;'>오늘의 평균점수 넣어줘야함</span><br>";
-	                   listHtml += "<span style='border:1px solid black;'>오늘의 최고점수 넣어줘야함</span><br>";
-	                   listHtml += "<span style='border:1px solid black;'>오늘의 사진 넣어줘야함</span><br>";
+	                   let listHtml = "<span class='title'>훈련일지</span><br>";
+	                   listHtml += "<div class='logData-container'>";
+	                   listHtml += "<div class='logData-Date'>";
+	                   listHtml += "일자 2023년 06월 08일 목요일";
+	                   listHtml += "</div>";
+	                   listHtml += "<div class='logData-trainLog'>";
+	                   listHtml += "<div class='main-container'>전체 스윙통계 넣어줘야함</div>";
+	                   listHtml += "<div class='mini-container'>오늘의 스윙횟수 넣어줘야함</div>";
+	                   listHtml += "<div class='mini-container'>오늘의 평균점수 넣어줘야함</div>";
+	                   listHtml += "<div class='mini-container'>오늘의 최고점수 넣어줘야함</div>";
+	                   listHtml += "</div>";
 	                   
-	                   listHtml += "<button onclick='MemoWrite()'>작성하기</button>"
+	                   listHtml += "<div class='logData-memo'>";
+	                   listHtml += "<div class='logData-memo-sub'>";
+	                   listHtml += "<span class='logData-memo-title'>훈련내용</span><button onclick='MemoWrite()'>작성하기</button>";
 	                   listHtml += "<span style='border:1px solid black;'>";
-	                   listHtml += "<input id='write' type='text' value='아아아' readonly>";
+	                   listHtml += "<textarea id='write' type='text' value='아아아' readonly></textarea>";
 	                   listHtml += "</span>";
+	                   listHtml += "</div>"
+	                   listHtml += "<div class='logData-memo-sub'>";
+	                   listHtml += "<span style='border:1px solid black;'>오늘의 사진 넣어줘야함</span><br>";
+	                   listHtml += "</div>";
+	                   listHtml += "</div>";
 	                   
-	                   
+	                   listHtml += "</div>";
 	                    
 	                  $("#logData").html(listHtml);
 	                  $("#logData").css("display","block");
@@ -272,10 +285,17 @@
 
 	<style>
 	
-	* {
-	font-family: 'TheJamsil';
-	font-weight: 300;
-}
+		@font-face {
+		    font-family: 'LOTTERIADDAG';
+		    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/LOTTERIADDAG.woff2') format('woff2');
+		    font-weight: normal;
+		    font-style: normal;
+		}
+			
+		* {
+			font-family: 'TheJamsil';
+			font-weight: 300;
+		}
 
 		.add-button {
 		position:absolute;
@@ -289,141 +309,226 @@
 		width: 120px;
 		}
 		
-		.modal-content input {
-	border : 0;
-	box-shadow : none;
-	font-size : 20px;
-	}
-
-	.modal-content input:focus { outline: none; }
-	
-	#calendar_title {
-		font-size : 20px;
-		font-weight : 400;
-	}
-	
-	#calendar_title::placeholder {
-		font-weight : 200;
-	}
-	
-	#calendar_content {
-		font-size : 20px;
-		font-weight : 200;
-	}
-	
-	/* 훈련일지-Modal(일정캘린더) */
-
-	.calendar-date {
-		margin : 0 auto;
-	}
-	
-	.calendar-date input {
-		text-align : center;
-		width : 160px;
-	}
-	
-	input[type='date'] {
-		position :relative;
-		padding : 0 0 0 16px;
-		background : url("../images/icon-calendar.png") no-repeat right 10px;
-		background-size : 25px 25px;
-		background-position : 165px center;
-		width : 200px;
-		height : 48px;
-		border : 1px solid #E1E1E1;
-		border-radius : 12px;
-		text-align : left;
-		font-size : 16px;
+		.title {
+			 font-family: 'LOTTERIADDAG';
+			 font-size : 45px;
+			 color : #34347D;
 		}
-	input[type='date']::-webkit-clear-button,
-	input[type='date']::-webkit-inner-spin-button { display : none; }
+		
+		
+		/* body레이아웃 */
+		.container {
+			display : flex;
+			align-items : stretch;
+		}
+		
+		.item:nth-child(1){
+			flex : 1 1 0;
+		}
+		
+		.item:nth-child(2){
+			flex : 8 1 0;
+		}
+		
+		.item:nth-child(3){
+			flex : 1 1 0;
+		}
+		
+		.modal-content input {
+			border : 0;
+			box-shadow : none;
+			font-size : 20px;
+		}
+
+		.modal-content input:focus { outline: none; }
+		
+		#calendar_title {
+			font-size : 20px;
+			font-weight : 400;
+		}
+		
+		#calendar_title::placeholder {
+			font-weight : 200;
+		}
+		
+		#calendar_content {
+			font-size : 20px;
+			font-weight : 200;
+		}
 	
-	input[type='date']::-webkit-calendar-picker-indicator {
-		position : absolute;
-		left : 0;
-		top : 0;
-		width : 100%;
-		height : 100%;
-		background : transparent;
-		color : transparent;
-		cursor :pointer;
-	}
+		/* 훈련일지-Modal(일정캘린더) */
 	
-	input[type='date']::before {
-	  content: attr(data-placeholder);
-	  width: 100%;
-	}
-	
-	input[type='date']:valid::before{
-		display : none;
-	}
-	
-	input[data-placeholder]::before {
-		color : #999999;
-		font-size : 14px;
-	}
-	
-	.calendar-date i { padding-left : 20px; padding-right : 20px; }
-	
-	/* 훈련일지-Modal(일정메모Color) */
-	
-	.color-palette {
-		margin : 0 auto;
-		text-align : center;
-	}
-	
-	#calendarform label {
-		padding-left : 10px;
-		padding-right: 10px;
-	}
-	
-	[type="radio"] {
-		vertical-align: middle;
-		appearance: none;
-		border: max(2px, 0.1em) solid red;
-		border-radius: 50%;
-		width: 1.25em;
-		height: 1.25em;
-	}
-	
-	[type="radio"]:hover {
-	  box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
-	  cursor: pointer;
-	}
-	
-	[type="radio"]:checked {
-	  border: 0.2em solid #999999;
-	}
-	
-	/* 훈련일지-Modal(일정추가버튼) */
-	.calendar-btn {
-		width : 120px;
-		height : 30px;
-		border : 0;
-		border-radius : 5px;
-		font-size : 16px;
-		font-weight : 400;
-		color : #fff;
-	}
-	
-	#addCalendar {
-		background:#34347D;
-		margin-right:10px;
-	}
-	
-	#addCalendar:hover {
-		 background-color : #AA1D20;
-		 transition: 0.7s;
-	}
-	
-	#sprintSettingModalClose {
-		background:#999999;
-	}
-	
-	#sprintSettingModalClose:hover {
-		 background-color : #AA1D20;
-		 transition: 0.7s;
-	}
+		.calendar-date {
+			margin : 0 auto;
+		}
+		
+		.calendar-date input {
+			text-align : center;
+			width : 160px;
+		}
+		
+		input[type='date'] {
+			position :relative;
+			padding : 0 0 0 16px;
+			background : url("../images/icon-calendar.png") no-repeat right 10px;
+			background-size : 25px 25px;
+			background-position : 165px center;
+			width : 200px;
+			height : 48px;
+			border : 1px solid #E1E1E1;
+			border-radius : 12px;
+			text-align : left;
+			font-size : 16px;
+			}
+		input[type='date']::-webkit-clear-button,
+		input[type='date']::-webkit-inner-spin-button { display : none; }
+		
+		input[type='date']::-webkit-calendar-picker-indicator {
+			position : absolute;
+			left : 0;
+			top : 0;
+			width : 100%;
+			height : 100%;
+			background : transparent;
+			color : transparent;
+			cursor :pointer;
+		}
+		
+		input[type='date']::before {
+		  content: attr(data-placeholder);
+		  width: 100%;
+		}
+		
+		input[type='date']:valid::before{
+			display : none;
+		}
+		
+		input[data-placeholder]::before {
+			color : #999999;
+			font-size : 14px;
+		}
+		
+		.calendar-date i { padding-left : 20px; padding-right : 20px; }
+		
+		/* 훈련일지-Modal(일정메모Color) */
+		
+		.color-palette {
+			margin : 0 auto;
+			text-align : center;
+		}
+		
+		#calendarform label {
+			padding-left : 10px;
+			padding-right: 10px;
+		}
+		
+		[type="radio"] {
+			vertical-align: middle;
+			appearance: none;
+			border: max(2px, 0.1em) solid red;
+			border-radius: 50%;
+			width: 1.25em;
+			height: 1.25em;
+		}
+		
+		[type="radio"]:hover {
+		  box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+		  cursor: pointer;
+		}
+		
+		[type="radio"]:checked {
+		  border: 0.2em solid #999999;
+		}
+		
+		/* 훈련일지-Modal(일정추가버튼) */
+		.calendar-btn {
+			width : 120px;
+			height : 30px;
+			border : 0;
+			border-radius : 5px;
+			font-size : 16px;
+			font-weight : 400;
+			color : #fff;
+		}
+		
+		#addCalendar {
+			background:#34347D;
+			margin-right:10px;
+		}
+		
+		#addCalendar:hover {
+			 background-color : #AA1D20;
+			 transition: 0.7s;
+		}
+		
+		#sprintSettingModalClose {
+			background:#999999;
+		}
+		
+		#sprintSettingModalClose:hover {
+			 background-color : #AA1D20;
+			 transition: 0.7s;
+		}
+		
+		/* 훈련일기 */
+		#logData {
+		}
+		
+		.logData-container {
+			width : 100%;
+			height : 700px; 
+			border : 2px solid #757575;
+			border-radius : 10px;
+			background : #EDEDED;
+			padding : 30px;
+			margin-top : 30px;
+		}
+		
+		.logData-Date {
+			height : 50px;
+			padding : 15px;
+		}
+		
+		.logData-trainLog {
+			height : 100px;
+			padding : 15px;
+		}
+		
+		.logData-trainLog .main-container {
+			float : left;
+			width : 50%;
+			height : 70px;
+			background : #34347D;
+			border-radius : 5px;
+			color : #fff;
+			text-align : center;
+		}
+		.logData-trainLog .mini-container {
+			float : left;
+			width : 14.7%;
+			height : 70px;
+			background : #fff;
+			border-radius : 5px;
+			text-align : center;
+			margin-left : 15px;
+		}
+		
+		.logData-memo {
+			maring-top : 50px;
+			widht : 100%;
+			height : 450px;
+		}
+		
+		.logData-memo-sub {
+			float : left;
+			marign : 10px 0;
+			width : 50%;
+			height : 100%;
+		}
+		
+		.logData-memo-title{
+		}
+		
 	</style>
 
 
@@ -495,6 +600,9 @@
         </div>
     </div>
 	
+	 <!-- 훈련로그 창 -->
+	<div id="logData" style="display: none;"></div>
+	
 </div>  
 		
 	<!-- 우측 여백 -->
@@ -504,10 +612,6 @@
 <!-- 푸터 -->	
 <jsp:include page="../common/footer.jsp"></jsp:include>
 
-<!-- 훈련로그 창 -->
-<div id="logData" style="display: none;">
-
-</div>
 
 </body>
 </html>
