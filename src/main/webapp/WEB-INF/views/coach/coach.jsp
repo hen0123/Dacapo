@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="kr.spring.entity.Coach"%>
 <%@ page import = "java.util.*" %>
-<c:set var="contextPath" value="${pageContext.request.contextPath}"></c:set>    
+<c:set var="contextPath" value="${pageContext.request.contextPath}"></c:set>    <!-- src/main/webapp/WEB-INF/views -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,7 +54,7 @@
         {
           pg: "T5102001",
           pay_method: "card",
-          merchant_uid: "merchant47"+i,
+          merchant_uid: "merchant47"+payDate,
           name: "이름 : 테스트",
           amount: 10,
           buyer_email: "${memEmail}",
