@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"></c:set>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>라인드라일브</title>
 <style>
 .footer {
 	width : 100%;
@@ -31,7 +33,7 @@
 	<div class="footer">
 		<div class="content">
 			<p>copyright © 2023 LINEDRIVE Co. 대표자 : 한창현
-			<a style="margin-left : 10px;"><img src="resources/images/Linedrive_Logoline.png"></a></p>
+			<a style="margin-left : 10px;"><img src="${contextPath}/resources/images/Linedrive_Logoline.png"></a></p>
 		</div>
 	</div>
 </body>

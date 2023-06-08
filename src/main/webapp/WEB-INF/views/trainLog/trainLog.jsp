@@ -39,7 +39,7 @@
 	<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
 
 	<!-- CSS -->
-	<link rel="stylesheet" href="resources/css/main.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/nav.css">
 	<script src="https://kit.fontawesome.com/e257908efc.js" crossorigin="anonymous"></script>
 	
 	<!-- fullcalendar 불러오기 -->
@@ -289,6 +289,141 @@
 		width: 120px;
 		}
 		
+		.modal-content input {
+	border : 0;
+	box-shadow : none;
+	font-size : 20px;
+	}
+
+	.modal-content input:focus { outline: none; }
+	
+	#calendar_title {
+		font-size : 20px;
+		font-weight : 400;
+	}
+	
+	#calendar_title::placeholder {
+		font-weight : 200;
+	}
+	
+	#calendar_content {
+		font-size : 20px;
+		font-weight : 200;
+	}
+	
+	/* 훈련일지-Modal(일정캘린더) */
+
+	.calendar-date {
+		margin : 0 auto;
+	}
+	
+	.calendar-date input {
+		text-align : center;
+		width : 160px;
+	}
+	
+	input[type='date'] {
+		position :relative;
+		padding : 0 0 0 16px;
+		background : url("../images/icon-calendar.png") no-repeat right 10px;
+		background-size : 25px 25px;
+		background-position : 165px center;
+		width : 200px;
+		height : 48px;
+		border : 1px solid #E1E1E1;
+		border-radius : 12px;
+		text-align : left;
+		font-size : 16px;
+		}
+	input[type='date']::-webkit-clear-button,
+	input[type='date']::-webkit-inner-spin-button { display : none; }
+	
+	input[type='date']::-webkit-calendar-picker-indicator {
+		position : absolute;
+		left : 0;
+		top : 0;
+		width : 100%;
+		height : 100%;
+		background : transparent;
+		color : transparent;
+		cursor :pointer;
+	}
+	
+	input[type='date']::before {
+	  content: attr(data-placeholder);
+	  width: 100%;
+	}
+	
+	input[type='date']:valid::before{
+		display : none;
+	}
+	
+	input[data-placeholder]::before {
+		color : #999999;
+		font-size : 14px;
+	}
+	
+	.calendar-date i { padding-left : 20px; padding-right : 20px; }
+	
+	/* 훈련일지-Modal(일정메모Color) */
+	
+	.color-palette {
+		margin : 0 auto;
+		text-align : center;
+	}
+	
+	#calendarform label {
+		padding-left : 10px;
+		padding-right: 10px;
+	}
+	
+	[type="radio"] {
+		vertical-align: middle;
+		appearance: none;
+		border: max(2px, 0.1em) solid red;
+		border-radius: 50%;
+		width: 1.25em;
+		height: 1.25em;
+	}
+	
+	[type="radio"]:hover {
+	  box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+	  cursor: pointer;
+	}
+	
+	[type="radio"]:checked {
+	  border: 0.2em solid #999999;
+	}
+	
+	/* 훈련일지-Modal(일정추가버튼) */
+	.calendar-btn {
+		width : 120px;
+		height : 30px;
+		border : 0;
+		border-radius : 5px;
+		font-size : 16px;
+		font-weight : 400;
+		color : #fff;
+	}
+	
+	#addCalendar {
+		background:#34347D;
+		margin-right:10px;
+	}
+	
+	#addCalendar:hover {
+		 background-color : #AA1D20;
+		 transition: 0.7s;
+	}
+	
+	#sprintSettingModalClose {
+		background:#999999;
+	}
+	
+	#sprintSettingModalClose:hover {
+		 background-color : #AA1D20;
+		 transition: 0.7s;
+	}
 	</style>
 
 

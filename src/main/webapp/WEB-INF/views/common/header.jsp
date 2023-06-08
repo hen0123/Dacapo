@@ -8,14 +8,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources/css/nav.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/nav.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://kit.fontawesome.com/e257908efc.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
 	<nav>
-		<a href="${contextPath}"><img src="resources/images/Linedrive_Logo.png"></a>
+		<a href="${contextPath}"><img src="${contextPath}/resources/images/Linedrive_Logo.png"></a>
 		<ul class="menu">
 			<li><a href="${contextPath}/posture">자세진단</a></li>
 			<li><a href="${contextPath}/trainLog/${mvo.memID}">훈련일지</a></li>
