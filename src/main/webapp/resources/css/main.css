@@ -315,6 +315,213 @@ body { margin : 0; font-family: 'TheJamsil'; }
 	line-height : 500%;
 }
 
+/* 자세진단-Modal */
+
+.modal {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.4);
+	font-family: 'TheJamsil';
+}
+
+.modal.show {
+	display: block;
+}
+
+.modal_body {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	
+	width: 500px;
+	height: 200px;
+	
+	text-align: center;
+	
+	background-color: rgb(255, 255, 255);
+	border-radius: 10px;
+	box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+	
+	transform: translateX(-50%) translateY(-50%);
+}
+      
+.m_head{
+	height: 70px;
+	padding: 10px;
+	display: flex;
+	justify-content: space-between;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	vertical-align : middle;
+}
+
+.modal-logo, .btn-close {
+	margin : 0;
+}
+
+.logo-circle {
+	width: 50px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	background-color: #34347D;
+	color : #fff;
+	float : left;
+	margin-right : 20px;
+}
+
+.logo-circle i {
+	margin : 0 auto;
+}
+      
+.m_body{
+	height: 80%;
+	padding: 20px;
+}
+
+.modal-title{
+	font-size: 25px;
+	font-weight: 300;
+	margin : 0 auto;
+	line-height : 1.8;
+}
+      
+.close_btn{
+	font-size: 20px;
+	color: rgb(139, 139, 139);
+	font-weight: 900;
+	cursor: pointer;
+}
+      
+.modal_label{
+	padding-top: 10px;
+}
+      
+.input_box{
+	width: 100%;
+	border: 1px solid rgb(189, 189, 189);
+	height: 30px;
+}
+      
+.modal_btn{
+	width: 80px;
+	height: 30px;
+	border-radius: 5px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bolder;
+	padding-top: 5px;
+	margin-left: 5px;
+	font-family: sans-serif;
+}
+      
+.cancle{
+	background-color: white;
+	color: black;
+}
+      
+.save{
+	background-color: rgb(50, 77, 158);
+	color: white;
+}
+
+/* 자세진단-result */
+.result-main {
+	width : 100%;
+	height : 300px;
+	margin-top : 30px;
+	font-family: 'TheJamsil';
+}
+
+.result-img {
+	float : left;
+	width : 550px;
+	height : 300px;
+	background : gray;
+}
+
+.result-content {
+	float : left;
+	width : 362px;
+	height : 300px;
+}
+
+.result-content .content1{
+	width : 100%;
+	height : 120px;
+}
+
+.result-content .content1 .score {
+	width :  300px;
+	height : 110px;
+	border : 20px solid #000000;
+	background : #323232;
+	margin : 0 auto;
+	text-align : center;
+	padding : 10px;
+}
+
+.score span {
+	margin : 0 auto;
+	text-align : center;
+	font-size : 35px;
+	font-weight : 300;
+}
+
+.score1 {
+	color : #fff;
+	filter : drop-shadow(0px 0px 5px #81FFFC);
+}
+
+.score2 {
+	color : #FFC2AF;
+	filter : drop-shadow(0px 0px 5px #FF715A);
+}
+
+.content2 {
+	margin : 0 auto;
+	width : 300px;
+	height : 180px;
+	background : #F0F0F0;
+	padding : 10px;
+	color : #757575;
+}
+
+.content3 {
+	font-weight : 100;
+}
+
+.result-button {
+	width : 100%;
+	height : 100px;
+	text-align : center;
+}
+
+.result-btn {
+	margin-top : 30px;
+	margin-left : 5px;
+	margin-right : 5px;
+	width : 180px;
+	height : 50px;
+	border : none;
+	border-radius : 10px;
+	background : #34347D;
+	
+	color : #fff;
+	font-weight : 300;
+	font-size : 20px;
+}
+
+.result-btn:focus {
+	background : #AA1D20;
+}
+
 /* 훈련일지-Modal(일정캘린더) */
 
 .calendar-date {

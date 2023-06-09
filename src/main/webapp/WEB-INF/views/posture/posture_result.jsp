@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>라인드라이브</title>
 <link rel="stylesheet" href="resources/css/main.css">
 </head>
 <body>
@@ -17,16 +17,31 @@
 <div class="container">
 	<!-- 좌측 여백 -->
 	<div class="item"></div>
-	<p>자세진단</p>
+	
 	<!-- 메인공간 -->
 	<div class="item">
-		<img> <!-- 사진 여기 -->
-		<p>전체점수</p>
-		<p>comment</p>
-		<p>Take-back</p>
-		<p>Swing</p>
-		<p>Impact</p>
-		<p>Follow-through</p>
+		<p class="title">자세진단</p>
+			<div class="result-main">
+				<div class="result-img"><img>이미지공간</div>
+				<div class="result-content">
+					<div class="content1">
+						<div class="score">
+							<span class="score1">전체 점수</span> <span class="score2">70</span>
+						</div>
+					</div>
+					<div class="content2">
+						Comment.
+						<div class="content3">피드백 내용</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="result-button">
+				<button class="result-btn">Take-back</button>
+				<button class="result-btn">Swing</button>
+				<button class="result-btn">Impact</button>
+				<button class="result-btn">Follow-through</button>
+			</div>
 	</div>  
 		
 	<!-- 우측 여백 -->
