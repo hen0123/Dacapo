@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>LineDrive</title>
 <style type="text/css">
    table, tr, td {
       border: 1px solid black;

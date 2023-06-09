@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>LineDrive</title>
 <link rel="stylesheet" href="resources/css/main.css">
 </head>
 <body>
@@ -20,7 +20,7 @@
 	<p>자세진단</p>
 	<!-- 메인공간 -->
 	<div class="item">
-		<img> <!-- 사진 여기 -->
+		<img src = "<c:url value ="/img/lee220230608_163502_104325Swing.jpg"/>""/> <!-- 사진 여기 -->
 		<p>전체점수</p>
 		<p>comment</p>
 		<p>Take-back</p>

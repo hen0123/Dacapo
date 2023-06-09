@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>라인드라이브</title>
+<title>LineDrive</title>
 <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
 <style>
       .modal {

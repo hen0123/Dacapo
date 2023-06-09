@@ -9,4 +9,6 @@ public interface PostureMapper {
    public void action(Posture mvo);
    
    public void run(Posture mvo);
+ 
+   public Posture result(String v);
 }

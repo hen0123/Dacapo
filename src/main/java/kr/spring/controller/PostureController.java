@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -104,49 +105,49 @@ public class PostureController {
    }
       
       @GetMapping("/posture.run")
-      public String run(HttpServletRequest request, RedirectAttributes rttr, HttpSession session){
+      public String run(HttpServletRequest request, RedirectAttributes rttr, HttpSession session, Model model){
             
            String video = (String)session.getAttribute("video");
            MultiValueMap<String,String> parameters = new LinkedMultiValueMap<>();
            parameters.add("video", video );
            
-           String url = "http://127.0.0.1:5002/result";
-           ResponseEntity<String> res = new RestTemplate().postForEntity(url, parameters, String.class);
-           System.out.println(res.getBody());
-           String data = res.getBody();
-           String[] comment = data.split(",");
-           String[] comment1 = comment[0].split(":");
-           String[] comment2 = comment[1].split(":");
-           String[] comment3 = comment[2].split(":");
-           String[] comment4 = comment[3].split(":");
-           String[] TackBack = comment[4].split(":",2);
-           String[] Swing = comment[5].split(":",2);
-           String[] Impact = comment[6].split(":",2);
-           String[] Follow = comment[7].split(":",2);
-           String[] score = comment[8].split(":");
-         
-           // Posture 객체 생성
-           Posture vo = new Posture();
-           Member mvo = (Member)session.getAttribute("mvo");
-           String v = (String)session.getAttribute("video");
-           vo.setMemID(mvo.getMemID());
-           vo.setVideo(v);
-           vo.setComment_1(comment1[1]);
-           vo.setComment_2(comment2[1]);
-           vo.setComment_3(comment3[1]);
-           vo.setComment_4(comment4[1]);
-           vo.setTakeBack(TackBack[1]);
-           vo.setSwing(Swing[1]);
-           vo.setImpact(Impact[1]);
-           vo.setFollowThrough(Follow[1]);
-           vo.setScore(score[1]);
-           posturemapper.run(vo);
+//           String url = "http://127.0.0.1:5002/result";
+//           ResponseEntity<String> res = new RestTemplate().postForEntity(url, parameters, String.class);
+//           System.out.println(res.getBody());
+//           String data = res.getBody();
+//           String[] comment = data.split(",");
+//           String[] comment1 = comment[0].split(":");
+//           String[] comment2 = comment[1].split(":");
+//           String[] comment3 = comment[2].split(":");
+//           String[] comment4 = comment[3].split(":");
+//           String[] TackBack = comment[4].split(":",2);
+//           String[] Swing = comment[5].split(":",2);
+//           String[] Impact = comment[6].split(":",2);
+//           String[] Follow = comment[7].split(":",2);
+//           String[] score = comment[8].split(":");
+//         
+//           // Posture 객체 생성
+//           Posture vo = new Posture();
+//           Member mvo = (Member)session.getAttribute("mvo");
+//           String v = (String)session.getAttribute("video");
+//           vo.setMemID(mvo.getMemID());
+//           vo.setVideo(v);
+//           vo.setComment_1(comment1[1]);
+//           vo.setComment_2(comment2[1]);
+//           vo.setComment_3(comment3[1]);
+//           vo.setComment_4(comment4[1]);
+//           vo.setTakeBack(TackBack[1]);
+//           vo.setSwing(Swing[1]);
+//           vo.setImpact(Impact[1]);
+//           vo.setFollowThrough(Follow[1]);
+//           vo.setScore(score[1]);
+//           posturemapper.run(vo);
+//    	  
+//    	   vo = posturemapper.result(v);
+//    	   model.addAttribute("vo",vo);
+    	 
            
-           return "redirect:/posture.result";
+           return  "posture/posture_result";
       }
-      
-      @RequestMapping("/posture.result")
-      public String result() {
-         return "posture/posture_result";
-      }
+   
 }
