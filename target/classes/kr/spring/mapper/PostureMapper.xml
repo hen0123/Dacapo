@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.mapper.PostureMapper">
+   <!-- video 파일 저장하기 -->
+   <insert id = "action" parameterType = "kr.spring.entity.Posture">
+      insert into posture(memID, video) values(#{memID},#{video})
+   </insert>
+   
+   <update id = "run" parameterType = "kr.spring.entity.Posture">
+      update posture
+      set TakeBack = #{TakeBack}, Impact = #{Impact}, Swing = #{Swing}, Impact = #{Impact}, FollowThrough = #{FollowThrough}, comment_1 = #{comment_1}, comment_2 = #{comment_2}, comment_3 = #{comment_3}, comment_4 = #{comment_4}, score = #{score}
+      where video = #{video}
+   </update>
+</mapper>

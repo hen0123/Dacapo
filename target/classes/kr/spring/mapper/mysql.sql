@@ -51,6 +51,28 @@ select * from coach;
 DROP TABLE coach;
 DELETE FROM coach WHERE name = '이성열'
 
+create table posture(
+   pIdx int not null auto_increment,
+   memID varchar(20),
+   video varchar(30),
+   TakeBack varchar(100),
+   Swing varchar(100),   
+   Impact varchar(100),   
+   FollowThrough varchar(100),
+   score varchar(20),
+   comment_1 varchar(200),
+   comment_2 varchar(200),
+   comment_3 varchar(200),
+   comment_4 varchar(200),
+   train_date datetime default now(),
+   primary key(pIdx)
+);
+
+DROP TABLE posture;
+
+select * from posture;
+
+
 
 insert into coach(region, name, career, beginDate, img) 
 values('용산','정경배','삼성 라이온즈 (1996~2001),

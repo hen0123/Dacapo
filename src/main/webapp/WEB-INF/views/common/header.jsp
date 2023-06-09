@@ -17,9 +17,16 @@
 	<nav>
 		<a href="${contextPath}"><img src="${contextPath}/resources/images/Linedrive_Logo.png"></a>
 		<ul class="menu">
-			<li><a href="${contextPath}/posture">자세진단</a></li>
-			<li><a href="${contextPath}/trainLog/${mvo.memID}">훈련일지</a></li>
-			<li><a href="${contextPath}/coach">코치매칭</a></li>
+			<c:if test="${empty mvo}">
+				<li><a href="${contextPath}/loginForm.do">자세진단</a></li>
+				<li><a href="${contextPath}/loginForm.do">훈련일지</a></li>
+				<li><a href="${contextPath}/loginForm.do">코치매칭</a></li>
+			</c:if>
+			<c:if test="${not empty mvo}">
+				<li><a href="${contextPath}/posture">자세진단</a></li>
+				<li><a href="${contextPath}/trainLog/${mvo.memID}">훈련일지</a></li>
+				<li><a href="${contextPath}/coach">코치매칭</a></li>
+			</c:if>
 		</ul>
 		
 		<c:if test="${empty mvo}">

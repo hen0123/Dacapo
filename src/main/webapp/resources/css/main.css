@@ -261,6 +261,7 @@ body { margin : 0; font-family: 'TheJamsil'; }
 	background-position : center;
 	padding-left : 109px;
 	padding-top : 132px;
+	cursor : pointer;
 }
 
 .upload .upload-text {
@@ -269,6 +270,23 @@ body { margin : 0; font-family: 'TheJamsil'; }
 	font-family: 'TheJamsil';
 	font-size : 17px;
 	font-weight : 300;
+	color : #34347D;
+}
+
+.posture-button {
+	margin : 0 auto;
+	margin-top : 10px;
+	padding : 3px;
+	text-align : center;
+	font-family: 'TheJamsil';
+	font-weight : 300;
+	font-size : 15px;
+	width : 100px;
+	height : 30px;
+	border : 2px solid #34347D;
+	border-radius : 20px;
+	color : #34347D;
+	cursor : pointer;
 }
 
 .sign-container {
@@ -525,7 +543,7 @@ input[data-placeholder]::before {
 	color: #757575;
 	text-decoration: none;
 }
-		
+
 .back-button a:hover {
 	color: #AA1D20;
 	text-decoration: none;
@@ -656,6 +674,7 @@ select option[value=""][disabled] {
 
 .coach-img img:hover {
 	filter: grayscale(0%);
+	cursor : pointer;
 }
 
 /* 카드 캐러셀 */
@@ -747,3 +766,52 @@ select option[value=""][disabled] {
 	background : #AA1D20;
 	filter:drop-shadow(5px 5px 10px gray);
 }
+
+/* 마이페이지 */
+
+.my-information-img1 {
+	background : url("../images/icon-mypage1.png") no-repeat;
+	background-position:center;
+	background-size : 130px 85px;
+	width : 140px;
+	height : 90px;
+	text-align : center;
+}
+
+.my-information-img2 {
+	background : url("../images/icon-mypage2.png") no-repeat;
+	background-position:center;
+	background-size : 90px 90px;
+	width : 140px;
+	height : 90px;
+	text-align : center;
+	vertical-align : middle;
+}
+
+.my-information-img3 {
+	background : url("../images/icon-mypage3.png") no-repeat;
+	background-position:center;
+	background-size : 100px 90px;
+	width : 140px;
+	height : 90px;
+	text-align : center;
+}
+
+.my-information-content {
+	color : #AA1D20;
+	font-size : 30px;
+	font-weight : 400;
+	padding-top : 10px;
+}
+
+.my-information {
+	font-weight : 400;
+	font-size : 20px;
+	padding-top : 10px;
+}
+
+.mini-title {
+	font-weight : 400;
+	font-size : 25px;
+}
+
