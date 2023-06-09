@@ -141,9 +141,8 @@ $(document).on('click', '#close_btn', function (e) {
 	
 	<div id="posture-body">
 		<div class="upload-container">
-			<div class="upload" onclick="location.href='${contextPath}/posture_upload'"><span class="upload-text">영상업로드</span></div>
+			<div class="upload" id="add-btn"><span class="upload-text">영상업로드</span></div>
 			<div onclick="location.href='${contextPath}/posture.run'" class="posture-button">진단하기</div>
-			<div class="btn" id="add-btn">업로드임시버튼</div>
 		</div>
 		<div class="sign-container">
 			<p id="header">!동영상 촬영 기준</p>
