@@ -306,10 +306,10 @@
 	                   listHtml += "일자 2023년 06월 08일 목요일";
 	                   listHtml += "</div>";
 	                   listHtml += "<div class='logData-trainLog'>";
-	                   listHtml += "<div class='main-container'>전체 스윙통계 넣어줘야함</div>";
-	                   listHtml += "<div class='mini-container'>오늘의 스윙횟수 넣어줘야함</div>";
-	                   listHtml += "<div class='mini-container'>오늘의 평균점수 넣어줘야함</div>";
-	                   listHtml += "<div class='mini-container'>오늘의 최고점수 넣어줘야함</div>";
+	                   listHtml += "<div class='main-container'><div class='main-container1'>오늘의 스윙 통계</div><div class='main-container2'>82%</div></div>";
+	                   listHtml += "<div class='mini-container'>스윙횟수</div>";
+	                   listHtml += "<div class='mini-container'>평균점수</div>";
+	                   listHtml += "<div class='mini-container'>최고점수</div>";
 	                   listHtml += "</div>";
 	                   
 	                   listHtml += "<div class='logData-memo'>";
@@ -665,6 +665,28 @@
 		.back-button a:hover {
 			color: #AA1D20;
 			text-decoration: none;
+		}
+		
+		.main-container1 {
+			float : left;
+			text-align : center;
+			vertical-align : middel;
+			width : 250px;
+			height : 100%;
+			font-size : 30px;
+			font-weight : 100;
+			margin-top : 5px;
+		}
+		
+		.main-container2 {
+			float : left;
+			text-align : center;
+			vertical-align : middel;
+			width : 127px;
+			height : 100%;
+			font-size : 40px;
+			color : #C7AA1D;
+			padding-bottom : 15px;
 		}
 			
 	</style>

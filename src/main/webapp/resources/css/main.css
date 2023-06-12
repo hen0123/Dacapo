@@ -1154,14 +1154,14 @@ select option[value=""][disabled] {
 
 .memberdata-info {
 	width : 100%;
-	height : 110px;
+	height : 150px;
 	margin : 0 auto;
 }
 
 .info-1 {
 	float : left;
-	width : 150px;
-	height : 100px;
+	width : 200px;
+	height : 200px;
 	margin : 0 auto;
 	text-align : center;
 	vertical-align : middle;
@@ -1169,10 +1169,11 @@ select option[value=""][disabled] {
 
 .info-2 {
 	float : left;
-	width : 650px;
-	height : 100px;
+	width : 550px;
+	height : 200px;
 	text-align : left;
 	border : 0;
+	margin-left : 20px;
 }
 
 .info-2 input {
@@ -1184,26 +1185,6 @@ select option[value=""][disabled] {
 	font-size : 30px;
 	font-weight : 400;
 	width : 200px;
-}
-
-.memberdata-table {
-	border : 1px solid black;
-	width : 100%;
-	height : 100%;
-	padding : 10px;
-	font-family: 'TheJamsil';
-	font-weight : 200;
-	font-size : 15px;
-	text-align : center;
-}
-
-.gender-btn i{
-	color : #757575;
-}
-
-.gender-btn input:checked{
-	background : red;
-	color : #34347D;
 }
 
 .memberdata-email {
@@ -1232,4 +1213,88 @@ select option[value=""][disabled] {
 
 .btn-group {
 	height : 50px;
+}
+
+.memberdata-gender .select input[type="radio"] {
+    -webkit-appearance: none;
+}
+
+.memberdata-gender .select label{
+   height: 30px;
+   width: 40px;
+   border: 1px solid #EDEDED;
+   margin: 0 auto;
+   border-radius: 5px;
+   position: relative;
+   color: #fff;
+   transition: 0.5s;
+   background : #EDEDED;
+}
+
+.memberdata-gender .select i {
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -80%); 
+}
+
+.memberdata-gender .select input[type="radio"]:checked + label {
+	background-color: #AA1D20;
+	color: #ffffff;
+	box-shadow: 0 0 20px rgb(0,0,0,0.1);
+	border: 1px solid #AA1D20;
+}
+
+.memberdata-gender .select .btn {
+	display : none;
+}
+
+.memberdata-gender {
+	position : relative;
+	right : 30px;
+	margin-top : 10px;
+}
+
+.memberdata-age {
+	position : relative;
+	bottom : 45px;	
+}
+
+.memberdata-age input {
+	border : 0;
+	width : 50px;
+	color : #AA1D20;
+}
+
+.memberdata-password {
+	clear : both;
+	margin-left : 30px;
+	margin-bottom : 5px;
+	position : relative;
+	bottom : 25px;
+}
+
+.memberdata-password i {
+	margin-right : 10px;
+	margin-left : 8px;
+}
+
+.memberdata-password input {
+	border : 0;
+	text-decoration: underline;
+	width : 70%;
+}
+
+.update-btn {
+	margin : 0 auto;
+	text-align : center;
+	width : 100px;
+	height : 30px;
+	background : #AA1D20;
+	color : #fff;
+	border : 0;
+	border-radius : 10px;
+	margin-top : 30px;
+	margin-left : 350px;
 }
