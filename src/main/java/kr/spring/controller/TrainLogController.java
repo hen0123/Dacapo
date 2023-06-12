@@ -53,5 +53,21 @@ public class TrainLogController {
 		   return list;
 		}
 		
+		// 달력에 데이터 삭제
+	      @ResponseBody
+	      @RequestMapping("/deleteDiary")
+	      public void deleteDiary(Diary diary) {
+	         
+	         System.out.println("다이어리 삭제 매핑 잘됨.");
+	         trainDiary.deleteDiary(diary);
+	         System.out.println(diary.getDiaryTitle());
+	         System.out.println(diary.getDiaryContent());
+	         System.out.println(diary.getDiaryStart());
+	         System.out.println(diary.getDiaryEnd());
+	         System.out.println(diary.getMemID()); 
+	         
+	         
+	         }
+		
 		
 }

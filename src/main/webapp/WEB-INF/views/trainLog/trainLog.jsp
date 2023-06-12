@@ -163,12 +163,88 @@
                 }
             },
             
-            /* 이벤트 눌렀을 때 삭제 */
+         	// 이벤트 눌렀을 때 삭제
+            // ajax로 컨트롤러 매핑 -> memID값, 일정의 고유값을 넘겨주고
+            // controller 로직에서 데이터베이스에서 해당 일정을 지워준다.
             eventClick: function(arg){
-            	if(confirm("일정을 삭제하시겠습니까?")){
-            		arg.event.remove()
-            		
-            	}
+               // 자바스크립트 달력의 arg파라미터에 접근하여 날짜 뽑아오기  
+               var startYear = arg.event._instance.range.start.getFullYear();
+               var startMonth = arg.event._instance.range.start.getMonth()+1;
+               var startDate = arg.event._instance.range.start.getDate();
+               
+               var strStartYear = startYear.toString();
+               var strstartMonth = startMonth.toString();
+               var strstartDate = startDate.toString();
+               
+               if(strstartMonth .length<2) {
+                  var startMonth = '0'+strstartMonth;
+               }
+               
+               
+               
+               if(strstartDate.length<2) {
+                  var startDate = '0'+strstartDate;
+               }
+               
+               
+               var endYear = arg.event._instance.range.end.getFullYear();
+               var endMonth = arg.event._instance.range.end.getMonth()+1;
+               var endDate =arg.event._instance.range.end.getDate()-1;
+               
+               var strEndYear = endYear.toString();
+               var strEndMonth = endMonth.toString();
+               var strEndDate = endDate.toString();
+               
+               if (strEndMonth.length<2) {
+                  var endMonth = '0'+strEndMonth;
+                  
+               }
+               console.log(endMonth);
+               if (strEndDate.length<2) {
+                  var endDate = '0'+strEndDate;   
+               }
+               
+               let DiaryStart = strStartYear+"-"+startMonth+"-"+startDate;
+               let DiaryEnd = strEndYear+"-"+endMonth+"-"+endDate;
+               let DiaryTitle = arg.event._def.title; 
+               let DiaryContent = arg.event._def.extendedProps.description;
+               
+               console.log(DiaryStart);
+               console.log(DiaryEnd);
+               console.log(DiaryTitle);
+               console.log(DiaryContent);
+               
+               // ajax로 데이터베이스 접근 후 해당 일지 삭제
+               if(confirm("일정을 삭제하시겠습니까?")){
+                  
+                  
+               arg.event.remove();
+                  
+               let mdata = {"DiaryStart" : DiaryStart, "DiaryEnd" : DiaryEnd, 
+                     "DiaryTitle" : DiaryTitle, "DiaryContent" : DiaryContent, "memID" : "${mvo.memID}"};
+               
+               
+               $.ajax({
+                    url : "${contextPath}/deleteDiary",
+                    data : mdata,
+                    method : "post",
+                    success : function(data){
+                  
+               },
+                    error : function(){ alert("error") }
+              });
+               
+               
+               
+               
+                  
+                  
+               
+                  
+                  
+                  
+                  
+               }
             },
             
             eventAdd: function () {

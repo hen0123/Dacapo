@@ -13,4 +13,6 @@ public interface TrainDiary {
 
 	List<Diary> getDiary(String memID);
 
+	void deleteDiary(Diary diary);
+
 }
