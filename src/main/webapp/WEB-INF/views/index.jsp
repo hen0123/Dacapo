@@ -61,7 +61,32 @@
 				<div><img src="resources/images/main/image2.png" /></div>
 				<div><img src="resources/images/main/image3.png" /></div>
 		   	</div>
-			
+		   	
+		   	<!-- 로그인 안했을 때 -->
+		   	<c:if test="${empty mvo}">
+		   	<div class="button-container">
+				<a href="${contextPath}/loginForm.do" class="main-button item">
+				<img src="resources/images/main/button1.png">
+				<span>자세진단</span>
+				<span class="button-sub">영상을 촬영하고 업로드하여<br>자세를 진단받아보세요</span>
+				</a>
+				
+				<a href="${contextPath}/loginForm.do" class="main-button item">
+				<img src="resources/images/main/button2.png">
+				<span>훈련일지</span>
+				<span class="button-sub">나만의 훈련일지를<br>작성해보세요</span>
+				</a>
+				
+				<a href="${contextPath}/loginForm.do" class="main-button item">
+				<img src="resources/images/main/button3.png">
+				<span>코치매칭</span>
+				<span class="button-sub">나에게 딱 맞는<br>코치를 찾아보세요</span>
+				</a>
+			</div>
+			</c:if>
+		   	
+			<!-- 로그인 했을 때 -->
+			<c:if test="${not empty mvo}">
 			<div class="button-container">
 				<a href="${contextPath}/posture" class="main-button item">
 				<img src="resources/images/main/button1.png">
@@ -81,7 +106,9 @@
 				<span class="button-sub">나에게 딱 맞는<br>코치를 찾아보세요</span>
 				</a>
 			</div>
-		</div>  
+			</c:if>
+			
+		</div> 
 		
 		<!-- 우측 여백 -->
 		<div class="item">

@@ -17,6 +17,11 @@
       select * from diary where memID = #{memID}
    	</select>
    	
+   	<!-- 달력에 아이디에 맞게 데이터 뿌려주기 -->
+      <select id="getTrain" parameterType="String" resultType="kr.spring.entity.Posture">
+      select * from posture where memID = #{memID}
+      </select>
+   	
    	<delete id="deleteDiary" parameterType="kr.spring.entity.Diary">
          delete from diary where memID = #{memID} and DiaryTitle = #{DiaryTitle} and DiaryContent = #{DiaryContent} and DiaryStart = #{DiaryStart} and DiaryEnd = #{DiaryEnd} 
     </delete>

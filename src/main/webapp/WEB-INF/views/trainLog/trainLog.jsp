@@ -5,45 +5,46 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.time.*" %>
 <%@ page import="kr.spring.entity.Diary" %>
+<%@ page import="kr.spring.entity.Posture" %>
 <!DOCTYPE html>
 <html>
 <head>
 
-	<!-- jquery -->
+   <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
     
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <!-- bootstrap -->
-  	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	
-	<!-- cdn -->
-	<link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css' rel='stylesheet' />
-	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js'></script>
-	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/locales-all.min.js'></script>
-	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
-	<!-- 언어 설정 관련 -->
-	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/locales-all.min.js'></script>
-	
-	<!-- 툴팁 옵션 -->
-	<script src='https://unpkg.com/popper.js/dist/umd/popper.min.js'></script>
-	<script src='https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js'></script>
-	
-	<link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
-	<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
+   
+   <!-- cdn -->
+   <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css' rel='stylesheet' />
+   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js'></script>
+   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/locales-all.min.js'></script>
+   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+   <!-- 언어 설정 관련 -->
+   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/locales-all.min.js'></script>
+   
+   <!-- 툴팁 옵션 -->
+   <script src='https://unpkg.com/popper.js/dist/umd/popper.min.js'></script>
+   <script src='https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js'></script>
+   
+   <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
+   <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
 
-	<!-- CSS -->
-	<link rel="stylesheet" href="${contextPath}/resources/css/nav.css">
-	<script src="https://kit.fontawesome.com/e257908efc.js" crossorigin="anonymous"></script>
-	
-	<!-- fullcalendar 불러오기 -->
-<!-- fullcalendar 불러오기 -->
+   <!-- CSS -->
+   <link rel="stylesheet" href="${contextPath}/resources/css/nav.css">
+   <script src="https://kit.fontawesome.com/e257908efc.js" crossorigin="anonymous"></script>
+   
+   <!-- fullcalendar 불러오기 -->
+
    <script type="text/javascript">
       
         document.addEventListener('DOMContentLoaded', function() {
@@ -98,6 +99,27 @@
                       },
                   <% } %>
                <% } %>
+               
+      
+               <%  ArrayList<Posture> Plist = (ArrayList<Posture>) request.getAttribute("Plist"); %>
+                <% if (!list.isEmpty()) { %>
+                   <% for (Posture pvo : Plist) { %>
+
+                   {
+                      title : '훈련',
+                      description : '훈련확인',
+                      start : '<%= pvo.getTrain_date() %>',
+                      end : '<%= pvo.getTrain_date() %>',
+                      color : '#AA1D20'
+                   },
+                
+                              
+                <% } %>
+          <% } %>
+             
+               
+               
+               
             ],
 
             // 일정 추가
@@ -229,24 +251,10 @@
                     data : mdata,
                     method : "post",
                     success : function(data){
-
-           
-                  alert("success");
-
+                  
                },
                     error : function(){ alert("error") }
               });
-               
-               
-               
-               
-                  
-                  
-               
-                  
-                  
-                  
-                  
                }
             },
             
@@ -278,73 +286,6 @@
                       method : "post",
                       erro : function(){ alert("error") }
                 });
-			},
-			
-			
-			dateClick: function(info) {
-	            
-				console.log("아이고");
-	            console.log(info.dateStr);
-	            
-	            dData = {"logDate" : info.dateStr, "memID" : "${mvo.memID}"};
-	            
-	            $.ajax({
-	                    url : "${contextPath}/oneTrainLog",
-	                    data : dData,
-	                    dataType : "json",
-	                    method : "get",
-	                    success : getLog,
-	                    error : function(){ alert("error") }
-	            });
-	                    
-	            function getLog(data) {
-	               
-	               $("#calendar").hide();
-	               
-	               /* $.each(data, function(index, obj){
-	                      console.log(obj.logMemo);
-	                      $("#logData").append(obj.logMemo);
-	                   }); */
-	                   let listHtml = "<span class='title'>훈련일지</span><br>";
-	                   listHtml += "<div class='logData-container'>";
-	                   listHtml += "<div class='logData-Date'>";
-	                   listHtml += "일자 2023년 06월 08일 목요일";
-	                   listHtml += "</div>";
-	                   listHtml += "<div class='logData-trainLog'>";
-	                   listHtml += "<div class='main-container'><div class='main-container1'>오늘의 스윙 통계</div><div class='main-container2'>82%</div></div>";
-	                   listHtml += "<div class='mini-container'>스윙횟수</div>";
-	                   listHtml += "<div class='mini-container'>평균점수</div>";
-	                   listHtml += "<div class='mini-container'>최고점수</div>";
-	                   listHtml += "</div>";
-	                   
-	                   listHtml += "<div class='logData-memo'>";
-	                   listHtml += "<div class='logData-memo-sub'>";
-	                   listHtml += "<span class='logData-memo-title'>훈련내용</span><button onclick='MemoWrite()'>작성하기</button>";
-	                   listHtml += "<div class='textarea'>";
-	                   listHtml += "<textarea id='write' type='text' value='아아아' readonly></textarea>";
-	                   listHtml += "</div>";
-	                   listHtml += "</div>"
-	                   listHtml += "<div class='logData-memo-sub'>";
-	                   listHtml += "<span class='logData-memo-title'>진단내용</span>";
-	                   listHtml += "<div class='logData-picture'>오늘의 사진 넣어줘야함</div>";
-	                   listHtml += "<div class='logData-coment'>피드백공간";
-	                   listHtml += "</div>";
-	                   listHtml += "</div>";
-	                   listHtml += "</div>";
-	                   
-	                   listHtml += "<div class='back-button'><a href='${contextPath}/trainLog/${mvo.memID}'>뒤로가기</a></div>";
-	                   listHtml += "</div>";
-	                    
-	                  $("#logData").html(listHtml);
-	                  $("#logData").css("display","block");
-	                  
-	                   
-	                   
-	                   
-	                   
-	                   
-	            }
-			},
          },
          
          
@@ -373,21 +314,41 @@
                          $("#logData").append(obj.logMemo);
                       });
                   
-                      let listHtml = "<span style='border:1px solid black;'>전체 스윙통계 넣어줘야함</span><br>";
-                      listHtml += "<span style='border:1px solid black;'>오늘의 스윙횟수 넣어줘야함</span><br>";
-                      listHtml += "<span style='border:1px solid black;'>오늘의 평균점수 넣어줘야함</span><br>";
-                      listHtml += "<span style='border:1px solid black;'>오늘의 최고점수 넣어줘야함</span><br>";
-                      listHtml += "<span style='border:1px solid black;'>오늘의 사진 넣어줘야함</span><br>";
-                      
-                      listHtml += "<button onclick='MemoWrite()'>작성하기</button>"
-                      listHtml += "<span style='border:1px solid black;'>";
-                      listHtml += "<input id='write' type='text' value='아아아' readonly>";
-                      listHtml += "</span>";
-                      
-                      
-                       
-                     $("#logData").html(listHtml);
-                     $("#logData").css("display","block");
+                  let listHtml = "<span class='title'>훈련일지</span><br>";
+                  listHtml += "<div class='logData-container'>";
+                  listHtml += "<div class='logData-Date'>";
+                  listHtml += "<span class='logData-Day'>일자 </span>"+info.dateStr;
+                  listHtml += "</div>";
+                  listHtml += "<div class='logData-trainLog'>";
+                  listHtml += "<div class='main-container'><div class='main-container1'>오늘의 스윙 통계</div><div class='main-container2'>82%</div></div>";
+                  listHtml += "<div class='mini-container'><div class='mini-container1'>스윙횟수</div>";
+                  listHtml += "<div class='mini-container2'><div class='mini-container3'>▼4</div><div class='mini-container4'>12</div></div></div>";
+                  listHtml += "<div class='mini-container'><div class='mini-container1'>평균점수</div>";
+                  listHtml += "<div class='mini-container2'><div class='mini-container3-2'>▲1</div><div class='mini-container4'>75</div></div></div>";
+                  listHtml += "<div class='mini-container'><div class='mini-container1'>최고점수</div>";
+                  listHtml += "<div class='mini-container2'><div class='mini-container3-2'>▲3</div><div class='mini-container4'>82</div></div></div>";
+                  listHtml += "</div>";
+                  
+                  listHtml += "<div class='logData-memo'>";
+                  listHtml += "<div class='logData-memo-sub'>";
+                  listHtml += "<span class='logData-memo-title'>훈련내용</span><button onclick='MemoWrite()'>작성하기</button>";
+                  listHtml += "<div class='textarea'>";
+                  listHtml += "<textarea id='write' type='text' value='아아아' readonly></textarea>";
+                  listHtml += "</div>";
+                  listHtml += "</div>"
+                  listHtml += "<div class='logData-memo-sub'>";
+                  listHtml += "<span class='logData-memo-title'>진단내용</span>";
+                  listHtml += "<div class='logData-picture'>오늘의 사진 넣어줘야함</div>";
+                  listHtml += "<div class='logData-coment'>피드백공간";
+                  listHtml += "</div>";
+                  listHtml += "</div>";
+                  listHtml += "</div>";
+                  
+                  listHtml += "<div class='back-button'><a href='${contextPath}/trainLog/${mvo.memID}'>뒤로가기</a></div>";
+                  listHtml += "</div>";
+                   
+                 $("#logData").html(listHtml);
+                 $("#logData").css("display","block");
                      
                       
                       
@@ -418,394 +379,432 @@
         
         
    </script>
-	
+   
 
-	<style>
-	
-		@font-face {
-		    font-family: 'LOTTERIADDAG';
-		    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/LOTTERIADDAG.woff2') format('woff2');
-		    font-weight: normal;
-		    font-style: normal;
-		}
-			
-		* {
-			font-family: 'TheJamsil';
-			font-weight: 300;
-		}
+   <style>
+   
+      @font-face {
+          font-family: 'LOTTERIADDAG';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/LOTTERIADDAG.woff2') format('woff2');
+          font-weight: normal;
+          font-style: normal;
+      }
+         
+      * {
+         font-family: 'TheJamsil';
+         font-weight: 300;
+      }
 
-		.add-button {
-		position:absolute;
-		top:35px;
-		right:260px;
-		background: #2C3E50;
-		border:0;
-		color: white;
-		height: 35px;
-		border-radius: 3px;
-		width: 120px;
-		}
-		
-		.title {
-			 font-family: 'LOTTERIADDAG';
-			 font-size : 45px;
-			 color : #34347D;
-		}
-		
-		
-		/* body레이아웃 */
-		.container {
-			display : flex;
-			align-items : stretch;
-		}
-		
-		.item:nth-child(1){
-			flex : 1 1 0;
-		}
-		
-		.item:nth-child(2){
-			flex : 8 1 0;
-		}
-		
-		.item:nth-child(3){
-			flex : 1 1 0;
-		}
-		
-		.modal-content input {
-			border : 0;
-			box-shadow : none;
-			font-size : 20px;
-		}
+      .add-button {
+      position:absolute;
+      top:35px;
+      right:260px;
+      background: #2C3E50;
+      border:0;
+      color: white;
+      height: 35px;
+      border-radius: 3px;
+      width: 120px;
+      }
+      
+      .title {
+          font-family: 'LOTTERIADDAG';
+          font-size : 45px;
+          color : #34347D;
+      }
+      
+      
+      /* body레이아웃 */
+      .container {
+         display : flex;
+         align-items : stretch;
+      }
+      
+      .item:nth-child(1){
+         flex : 1 1 0;
+      }
+      
+      .item:nth-child(2){
+         flex : 8 1 0;
+      }
+      
+      .item:nth-child(3){
+         flex : 1 1 0;
+      }
+      
+      .modal-content input {
+         border : 0;
+         box-shadow : none;
+         font-size : 20px;
+      }
 
-		.modal-content input:focus { outline: none; }
-		
-		#calendar_title {
-			font-size : 20px;
-			font-weight : 400;
-		}
-		
-		#calendar_title::placeholder {
-			font-weight : 200;
-		}
-		
-		#calendar_content {
-			font-size : 20px;
-			font-weight : 200;
-		}
-	
-		/* 훈련일지-Modal(일정캘린더) */
-	
-		.calendar-date {
-			margin : 0 auto;
-		}
-		
-		.calendar-date input {
-			text-align : center;
-			width : 160px;
-		}
-		
-		input[type='date'] {
-			position :relative;
-			padding : 0 0 0 16px;
-			background : url("../images/icon-calendar.png") no-repeat right 10px;
-			background-size : 25px 25px;
-			background-position : 165px center;
-			width : 200px;
-			height : 48px;
-			border : 1px solid #E1E1E1;
-			border-radius : 12px;
-			text-align : left;
-			font-size : 16px;
-			}
-		input[type='date']::-webkit-clear-button,
-		input[type='date']::-webkit-inner-spin-button { display : none; }
-		
-		input[type='date']::-webkit-calendar-picker-indicator {
-			position : absolute;
-			left : 0;
-			top : 0;
-			width : 100%;
-			height : 100%;
-			background : transparent;
-			color : transparent;
-			cursor :pointer;
-		}
-		
-		input[type='date']::before {
-		  content: attr(data-placeholder);
-		  width: 100%;
-		}
-		
-		input[type='date']:valid::before{
-			display : none;
-		}
-		
-		input[data-placeholder]::before {
-			color : #999999;
-			font-size : 14px;
-		}
-		
-		.calendar-date i { padding-left : 20px; padding-right : 20px; }
-		
-		/* 훈련일지-Modal(일정메모Color) */
-		
-		.color-palette {
-			margin : 0 auto;
-			text-align : center;
-		}
-		
-		#calendarform label {
-			padding-left : 10px;
-			padding-right: 10px;
-		}
-		
-		[type="radio"] {
-			vertical-align: middle;
-			appearance: none;
-			border: max(2px, 0.1em) solid red;
-			border-radius: 50%;
-			width: 1.25em;
-			height: 1.25em;
-		}
-		
-		[type="radio"]:hover {
-		  box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
-		  cursor: pointer;
-		}
-		
-		[type="radio"]:checked {
-		  border: 0.2em solid #999999;
-		}
-		
-		/* 훈련일지-Modal(일정추가버튼) */
-		.calendar-btn {
-			width : 120px;
-			height : 30px;
-			border : 0;
-			border-radius : 5px;
-			font-size : 16px;
-			font-weight : 400;
-			color : #fff;
-		}
-		
-		#addCalendar {
-			background:#34347D;
-			margin-right:10px;
-		}
-		
-		#addCalendar:hover {
-			 background-color : #AA1D20;
-			 transition: 0.7s;
-		}
-		
-		#sprintSettingModalClose {
-			background:#999999;
-		}
-		
-		#sprintSettingModalClose:hover {
-			 background-color : #AA1D20;
-			 transition: 0.7s;
-		}
-		
-		/* 훈련일기 */
-		.logData-container {
-			width : 100%;
-			height : 700px; 
-			border : 2px solid #757575;
-			border-radius : 10px;
-			background : #EDEDED;
-			padding : 30px;
-			margin-top : 30px;
-		}
-		
-		.logData-Date {
-			height : 50px;
-			padding : 15px;
-		}
-		
-		.logData-trainLog {
-			height : 100px;
-			padding : 15px;
-		}
-		
-		.logData-trainLog .main-container {
-			float : left;
-			width : 50%;
-			height : 70px;
-			background : #34347D;
-			border-radius : 5px;
-			color : #fff;
-			text-align : center;
-			padding : 10px;
-		}
-		.logData-trainLog .mini-container {
-			float : left;
-			width : 14.7%;
-			height : 70px;
-			background : #fff;
-			border-radius : 5px;
-			text-align : center;
-			margin-left : 15px;
-			padding : 10px;
-		}
-		
-		.logData-memo {
-			margin-top : 40px;
-			widht : 100%;
-			height : 450px;
-		}
-		
-		.logData-memo-sub {
-			float : left;
-			width : 50%;
-			height : 430px;
-			padding-left : 15px;
-		}
-		
-		.logData-memo-title {
-			font-size : 20px;
-			font-weight : 400;
-			color : #34347D;
-		}
-		
-		.logData-memo-sub button {
-			position : relative;
-			left : 270px;
-			background : transparent;
-			border : none;
-			color : #757575;
-		}
-		
-		.logData-memo-sub textarea {
-			width : 100%;
-			height : 370px;
-			border : none;
-			border-radius : 10px;
-			resize : none;
-			margin-top : 10px;
-		}
-		
-		.textarea {
-			marign-top : 20px;
-		}
-		
-		.logData-picture {
-			widht : 100%;
-			height: 200px;
-			background : gray;
-			margin-top : 10px;
-		}
-		
-		.logData-coment {
-			width : 100%;
-			height : 160px;
-			margin-top : 10px;
-			background : #FFD2D4;
-			border-radius : 10px;
-			padding : 10px;
-		}
-		
-		.back-button {
-			clear : both;
-			margin : 0 auto;
-			width : 100%;
-			height : 30px;
-			margin-top : -30px;
-			text-align : center;
-		}
-		
-		.back-button a {
-			color: #757575;
-			text-decoration: none;
-		}
-		
-		.back-button a:hover {
-			color: #AA1D20;
-			text-decoration: none;
-		}
-		
-		.main-container1 {
-			float : left;
-			text-align : center;
-			vertical-align : middel;
-			width : 250px;
-			height : 100%;
-			font-size : 30px;
-			font-weight : 100;
-			margin-top : 5px;
-		}
-		
-		.main-container2 {
-			float : left;
-			text-align : center;
-			vertical-align : middel;
-			width : 127px;
-			height : 100%;
-			font-size : 40px;
-			color : #C7AA1D;
-			padding-bottom : 15px;
-		}
-			
-	</style>
+      .modal-content input:focus { outline: none; }
+      
+      #calendar_title {
+         font-size : 20px;
+         font-weight : 400;
+      }
+      
+      #calendar_title::placeholder {
+         font-weight : 200;
+      }
+      
+      #calendar_content {
+         font-size : 20px;
+         font-weight : 200;
+      }
+   
+      /* 훈련일지-Modal(일정캘린더) */
+   
+      .calendar-date {
+         margin : 0 auto;
+      }
+      
+      .calendar-date input {
+         text-align : center;
+         width : 160px;
+      }
+      
+      input[type='date'] {
+         position :relative;
+         padding : 0 0 0 16px;
+         background : url("../images/icon-calendar.png") no-repeat right 10px;
+         background-size : 25px 25px;
+         background-position : 165px center;
+         width : 200px;
+         height : 48px;
+         border : 1px solid #E1E1E1;
+         border-radius : 12px;
+         text-align : left;
+         font-size : 16px;
+         }
+      input[type='date']::-webkit-clear-button,
+      input[type='date']::-webkit-inner-spin-button { display : none; }
+      
+      input[type='date']::-webkit-calendar-picker-indicator {
+         position : absolute;
+         left : 0;
+         top : 0;
+         width : 100%;
+         height : 100%;
+         background : transparent;
+         color : transparent;
+         cursor :pointer;
+      }
+      
+      input[type='date']::before {
+        content: attr(data-placeholder);
+        width: 100%;
+      }
+      
+      input[type='date']:valid::before{
+         display : none;
+      }
+      
+      input[data-placeholder]::before {
+         color : #999999;
+         font-size : 14px;
+      }
+      
+      .calendar-date i { padding-left : 20px; padding-right : 20px; }
+      
+      /* 훈련일지-Modal(일정메모Color) */
+      
+      .color-palette {
+         margin : 0 auto;
+         text-align : center;
+      }
+      
+      #calendarform label {
+         padding-left : 10px;
+         padding-right: 10px;
+      }
+      
+      [type="radio"] {
+         vertical-align: middle;
+         appearance: none;
+         border: max(2px, 0.1em) solid red;
+         border-radius: 50%;
+         width: 1.25em;
+         height: 1.25em;
+      }
+      
+      [type="radio"]:hover {
+        box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+        cursor: pointer;
+      }
+      
+      [type="radio"]:checked {
+        border: 0.2em solid #999999;
+      }
+      
+      /* 훈련일지-Modal(일정추가버튼) */
+      .calendar-btn {
+         width : 120px;
+         height : 30px;
+         border : 0;
+         border-radius : 5px;
+         font-size : 16px;
+         font-weight : 400;
+         color : #fff;
+      }
+      
+      #addCalendar {
+         background:#34347D;
+         margin-right:10px;
+      }
+      
+      #addCalendar:hover {
+          background-color : #AA1D20;
+          transition: 0.7s;
+      }
+      
+      #sprintSettingModalClose {
+         background:#999999;
+      }
+      
+      #sprintSettingModalClose:hover {
+          background-color : #AA1D20;
+          transition: 0.7s;
+      }
+      
+      /* 훈련일기 */
+      .logData-container {
+         width : 100%;
+         height : 700px; 
+         border : 2px solid #757575;
+         border-radius : 10px;
+         background : #EDEDED;
+         padding : 30px;
+         margin-top : 30px;
+      }
+      
+      .logData-Date {
+         height : 50px;
+         padding : 15px;
+         font-size : 20px;
+      }
+      
+      .logData-Day {
+      	font-weight : 400;
+      }
+      
+      .logData-trainLog {
+         height : 100px;
+         padding : 15px;
+      }
+      
+      .logData-trainLog .main-container {
+         float : left;
+         width : 50%;
+         height : 70px;
+         background : #34347D;
+         border-radius : 5px;
+         color : #fff;
+         text-align : center;
+         padding : 10px;
+      }
+      .logData-trainLog .mini-container {
+         float : left;
+         width : 14.7%;
+         height : 70px;
+         background : #fff;
+         border-radius : 5px;
+         text-align : center;
+         margin-left : 15px;
+         padding : 10px;
+      }
+      
+      .logData-memo {
+         margin-top : 40px;
+         widht : 100%;
+         height : 450px;
+      }
+      
+      .logData-memo-sub {
+         float : left;
+         width : 50%;
+         height : 430px;
+         padding-left : 15px;
+      }
+      
+      .logData-memo-title {
+         font-size : 20px;
+         font-weight : 400;
+         color : #34347D;
+      }
+      
+      .logData-memo-sub button {
+         position : relative;
+         left : 270px;
+         background : transparent;
+         border : none;
+         color : #757575;
+      }
+      
+      .logData-memo-sub textarea {
+         width : 100%;
+         height : 370px;
+         border : none;
+         border-radius : 10px;
+         resize : none;
+         margin-top : 10px;
+      }
+      
+      .textarea {
+         marign-top : 20px;
+      }
+      
+      .logData-picture {
+         widht : 100%;
+         height: 200px;
+         background : gray;
+         margin-top : 10px;
+      }
+      
+      .logData-coment {
+         width : 100%;
+         height : 160px;
+         margin-top : 10px;
+         background : #FFD2D4;
+         border-radius : 10px;
+         padding : 10px;
+      }
+      
+      .back-button {
+         clear : both;
+         margin : 0 auto;
+         width : 100%;
+         height : 30px;
+         margin-top : -30px;
+         text-align : center;
+      }
+      
+      .back-button a {
+         color: #757575;
+         text-decoration: none;
+      }
+      
+      .back-button a:hover {
+         color: #AA1D20;
+         text-decoration: none;
+      }
+      
+       .main-container1 {
+         float : left;
+         text-align : center;
+         vertical-align : middel;
+         width : 250px;
+         height : 100%;
+         font-size : 30px;
+         font-weight : 100;
+         margin-top : 5px;
+      }
+      
+      .main-container2 {
+         float : left;
+         text-align : center;
+         vertical-align : middel;
+         width : 127px;
+         height : 100%;
+         font-size : 40px;
+         color : #C7AA1D;
+         padding-bottom : 15px;
+      }
+      
+      .mini-container1 {
+      	width : 50%;
+      	height : 100%;
+      	float :left;
+      	font-size : 18px;
+      	font-weight : 400;
+      	color : #313131;
+      }
+      
+      .mini-container2 {
+      	width : 50%;
+      	height : 100%;
+      	float : left;
+      }
+      
+      .mini-container3 {
+      	width : 100%;
+      	height : 30%;
+      	color : #B21F2C;
+      }
+      
+	  .mini-container3-2 {
+      	width : 100%;
+      	height : 30%;
+      	color :  #2351AA;
+      }
+      
+      .mini-container4 {
+      	width : 100%;
+      	height : 70%;
+      	font-size : 28px;
+      	font-weight : 300;
+      }
+         
+   </style>
 
 
 <meta charset="UTF-8">
 
-<title>LineDrive
-</title>
+<title>라인드라이브</title>
 </head>
 <body>
 <!-- 헤더 -->
 <jsp:include page="../common/header.jsp"></jsp:include>
 <!-- 바디 -->
 <div class="container">
-	<!-- 좌측 여백 -->
-	<div class="item"></div>
-		
-	<!-- 메인공간 -->
-	<div class="item">
+   <!-- 좌측 여백 -->
+   <div class="item"></div>
+      
+   <!-- 메인공간 -->
+   <div class="item">
 
-	<!-- fullcalendar -->
-	<div id='calendarBox'>	
-		<div id='calendar'>
-		</div>
-	</div>
-	
-	<!-- modal 추가 -->
+   <!-- fullcalendar -->
+   <div id='calendarBox'>   
+      <div id='calendar'>
+      </div>
+   </div>
+   
+   <!-- modal 추가 -->
     <div class="modal" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true" style="padding-top:100px;">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="text-align:right;">
-						<span aria-hidden="true">&times;</span>
+                  <span aria-hidden="true">&times;</span>
                     </button>
                     <div class="form-group">
-                    	<form role="form" id="calendarform">
-	                        <h2><input type="text" class="form-control" id="calendar_title" name="calendar_title" placeholder="일정"></h2>
-	                        <hr />
-	                        
-	                        <div>
-							<input type="text" class="form-control" id="calendar_content" name="calendar_content" placeholder="메모">
-	                        <hr />
-	                        </div>
-	                        
-	                       	<div class="calendar-date">
-								<input type="date" id="calendar_start_date" data-placeholder="기간(시작)" required>
-								<i class="fa-solid fa-arrow-right"></i>
-								<input type="date" id="calendar_end_date" data-placeholder="기간(시작)" required>
-							<hr />
-							</div>
-							
-							<div class="color-palette">
-		                        <label><input type="radio" id="calendar_color" name="calendar_color" value="#3788D8" style="background:#3788D8;" checked></label>
-		                        <label><input type="radio" id="calendar_color" name="calendar_color" value="#99CCFF" style="background:#99CCFF;"></label>
-		                        <label><input type="radio" id="calendar_color" name="calendar_color" value="#AC7BD7" style="background:#AC7BD7;"></label>
-		                        <label><input type="radio" id="calendar_color" name="calendar_color" value="#FFCCFF" style="background:#FFCCFF;"></label>
-		                        <label><input type="radio" id="calendar_color" name="calendar_color" value="#FFCC99" style="background:#FFCC99;"></label>
-	                        </div>
-	                        
-                    	</form>    
+                       <form role="form" id="calendarform">
+                           <h2><input type="text" class="form-control" id="calendar_title" name="calendar_title" placeholder="일정"></h2>
+                           <hr />
+                           
+                           <div>
+                     <input type="text" class="form-control" id="calendar_content" name="calendar_content" placeholder="메모">
+                           <hr />
+                           </div>
+                           
+                             <div class="calendar-date">
+                        <input type="date" id="calendar_start_date" data-placeholder="기간(시작)" required>
+                        <i class="fa-solid fa-arrow-right"></i>
+                        <input type="date" id="calendar_end_date" data-placeholder="기간(시작)" required>
+                     <hr />
+                     </div>
+                     
+                     <div class="color-palette">
+                              <label><input type="radio" id="calendar_color" name="calendar_color" value="#3788D8" style="background:#3788D8;" checked></label>
+                              <label><input type="radio" id="calendar_color" name="calendar_color" value="#99CCFF" style="background:#99CCFF;"></label>
+                              <label><input type="radio" id="calendar_color" name="calendar_color" value="#AC7BD7" style="background:#AC7BD7;"></label>
+                              <label><input type="radio" id="calendar_color" name="calendar_color" value="#FFCCFF" style="background:#FFCCFF;"></label>
+                              <label><input type="radio" id="calendar_color" name="calendar_color" value="#FFCC99" style="background:#FFCC99;"></label>
+                           </div>
+                           
+                       </form>    
                     </div>
                 </div>
                 <div style="margin:0 auto; padding-bottom:30px;">
@@ -813,21 +812,21 @@
                     <button type="button" class="calendar-btn" data-dismiss="modal"
                         id="sprintSettingModalClose">취소</button>
                 </div>
-    	
+       
             </div>
         </div>
     </div>
-	
-	 <!-- 훈련로그 창 -->
-	<div id="logData" style="display: none;"></div>
-	
+   
+    <!-- 훈련로그 창 -->
+   <div id="logData" style="display: none;"></div>
+   
 </div>  
-		
-	<!-- 우측 여백 -->
-	<div class="item"></div>
+      
+   <!-- 우측 여백 -->
+   <div class="item"></div>
 </div>
     
-<!-- 푸터 -->	
+<!-- 푸터 -->   
 <jsp:include page="../common/footer.jsp"></jsp:include>
 
 

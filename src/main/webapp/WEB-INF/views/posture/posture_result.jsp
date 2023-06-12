@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>라인드라이브</title>
+<title>LineDrive</title>
 <link rel="stylesheet" href="resources/css/main.css">
 </head>
 <%@ page import="kr.spring.entity.*" %>

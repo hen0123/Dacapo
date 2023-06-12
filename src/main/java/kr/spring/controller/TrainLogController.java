@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.spring.entity.Diary;
 import kr.spring.entity.Log;
+import kr.spring.entity.Posture;
 import kr.spring.mapper.TrainDiary;
 
 @Controller
@@ -29,6 +30,9 @@ public class TrainLogController {
 	      List<Diary> list = trainDiary.getDiary(memID);
 	      model.addAttribute("list", list);
 	      
+	      List<Posture> Plist = trainDiary.getTrain(memID);
+	      model.addAttribute("Plist", Plist);
+
 	      return "trainLog/trainLog";
 	   }
 	 
