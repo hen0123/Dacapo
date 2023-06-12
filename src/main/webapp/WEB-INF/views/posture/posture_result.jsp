@@ -31,7 +31,7 @@
 					</div>
 					<div class="content2">
 						Comment.
-						<div class="content3">피드백 내용</div>
+						<div class="content3">피드백 내용삽입</div>
 					</div>
 				</div>
 			</div>

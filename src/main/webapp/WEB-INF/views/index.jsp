@@ -12,6 +12,15 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script src="https://kit.fontawesome.com/e257908efc.js" crossorigin="anonymous"></script>
+    
+<style>
+	.slider {
+		box-shadow : none;
+		padding : 0;
+		margin : 0;
+	} 
+</style>
 </head>
 <script type="text/javascript">
    $(document).ready(function() {
@@ -19,13 +28,18 @@
          auto : true,
          speed : 1000,
          pause : 2500,
-         mode : 'fade',
+         mode : 'horizontal',
          pager : false,
          autoHover : true,
+         randomStart : false,
+         nextSelector : '#nextText',
+         prevSelector : '#prevText',
+         nextText : '<i class="fa-solid fa-chevron-right fa-4x"></i>',
+         prevText : '<i class="fa-solid fa-chevron-left fa-4x"></i>',
+         slideMargin : 0,
       });
    });
 </script>
-
 
 <body style=" margin : 0; padding : 0;">
 
@@ -36,7 +50,9 @@
 	
 	<div class="container">
 		<!-- 좌측 여백 -->
-		<div class="item"></div>
+		<div class="item">
+			<span id="prevText"></span>
+		</div>
 		
 		<!-- 메인공간 -->
 		<div class="item">
@@ -68,7 +84,9 @@
 		</div>  
 		
 		<!-- 우측 여백 -->
-		<div class="item"></div>
+		<div class="item">
+			<span id="nextText"></span>
+		</div>
 	</div>
 	
 	<!-- 푸터 -->	

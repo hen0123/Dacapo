@@ -6,7 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>라인드라이브</title>
+<link rel="stylesheet" href="${contextPath}/resources/css/main.css">
+<script src="https://kit.fontawesome.com/e257908efc.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -40,99 +42,97 @@
 	
 </script>
 <body>
-	<div class="container">
-	<jsp:include page="../common/header.jsp"></jsp:include>
-	  <h2>Spring MVC03</h2>
-	  	<div class="panel panel-default">
-	  		<div class="panel-heading">회원정보 수정</div>
-	  		<div class="panel-body">
-	  			<form action="${contextPath}/update.do" method="post">
+
+<!-- 헤더 -->
+<jsp:include page="../common/header.jsp"></jsp:include>
+
+<!-- 바디 -->
+<div class="container">
+	<!-- 좌측 여백 -->
+	<div class="item"></div>
+		
+	<!-- 메인공간 -->
+	<div class="item">
+	
+	<p class="title">회원정보수정</p>
+	  	<div class="memberdata-container">
+	  		<form action="${contextPath}/update.do" method="post">
 	  				
-	  				<input type="hidden" name="memID" value="${mvo.memID}">
-	  				<input type="hidden" id="memPassword" name="memPassword" value="">
+	  			<input type="hidden" name="memID" value="${mvo.memID}">
+	  			<input type="hidden" id="memPassword" name="memPassword" value="">
 	  				
-	  				<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd;">
-	  					<tr>
-	  						<td style="width: 110; vertical-align: middle;">아이디</td>
-	  						<td>${mvo.memID}</td>
-	  					</tr>
-	  					<tr>
-	  						<td style="width: 110; vertical-align: middle;">비밀번호</td>
-	  						<td colspan="2"><input required="required" onkeyup="passwordCheck()" id="memPassword1" type="password" name="memPassword1" class="form-control" placeholder="비밀번호를 입력하세요." maxlength="20"></td>
-	  					</tr>
-	  					<tr>
-	  						<td style="width: 110; vertical-align: middle;">비밀번호 확인</td>
-	  						<td colspan="2"><input required="required" onkeyup="passwordCheck()" id="memPassword2" type="password" name="memPassword2" class="form-control" placeholder="비밀번호를 확인하세요." maxlength="20"></td>
-	  					</tr>
-	  					<tr>
-	  						<td style="width: 110; vertical-align: middle;">사용자 이름</td>
-	  						<td colspan="2"><input required="required" type="text" name="memName" class="form-control" placeholder="이름을 입력하세요." maxlength="20" value="${mvo.memName}"></td>
-	  					</tr>
-	  					<tr>
-	  						<td style="width: 110; vertical-align: middle;">사용자 나이</td>
-	  						<td colspan="2"><input required="required" type="number" name="memAge" class="form-control" placeholder="나이를 입력하세요." maxlength="20" value="${mvo.memAge}"></td>
-	  					</tr>
-	  					<tr>
-	  						<td style="width: 110; vertical-align: middle;">성별</td>
-	  						<td colspan="2">
-	  							<c:if test="${mvo.memGender eq '남자' }">
-		  							<div class="form-group" style="text-align: center; margin: 0 auto;"></div>
-									<div class="btn-group" data-toggle="buttons">
-										<label class="btn btn-primary active">
-											<input type="radio" name="memGender" autocomplete="off" value="남자" checked="checked"/> 남자
-										</label>
-										<label class="btn btn-primary">
-											<input type="radio" name="memGender" autocomplete="off" value="여자" /> 여자
-										</label>
-									</div>	
-	  							</c:if>
+	  			<table class="memberdata-table">
+	  				<tr>
+	  					<td style="width: 110; vertical-align: middle;">아이디</td>
+	  					<td>${mvo.memID}</td>
+	  				</tr>
+	  				<tr>
+	  					<td style="width: 110; vertical-align: middle;">비밀번호</td>
+	  					<td colspan="2"><input required="required" onkeyup="passwordCheck()" id="memPassword1" type="password" name="memPassword1" class="form-control" placeholder="비밀번호를 입력하세요." maxlength="20"></td>
+	  				</tr>
+	  				<tr>
+	  					<td style="width: 110; vertical-align: middle;">비밀번호 확인</td>
+	  					<td colspan="2"><input required="required" onkeyup="passwordCheck()" id="memPassword2" type="password" name="memPassword2" class="form-control" placeholder="비밀번호를 확인하세요." maxlength="20"></td>
+	  				</tr>
+	  				<tr>
+	  					<td style="width: 110; vertical-align: middle;">사용자 이름</td>
+	  					<td colspan="2"><input required="required" type="text" name="memName" class="form-control" placeholder="이름을 입력하세요." maxlength="20" value="${mvo.memName}"></td>
+	  				</tr>
+	  				<tr>
+	  					<td style="width: 110; vertical-align: middle;">사용자 나이</td>
+	  					<td colspan="2"><input required="required" type="number" name="memAge" class="form-control" placeholder="나이를 입력하세요." maxlength="20" value="${mvo.memAge}"></td>
+	  				</tr>
+	  				<tr>
+	  					<td style="width: 110; vertical-align: middle;"><i class="fa-solid fa-person"></i>성별</td>
+	  					<td colspan="2">
+	  						<c:if test="${mvo.memGender eq '남자' }">
+		  						<div class="form-group" style="text-align: center; margin: 0 auto;"></div>
+								<div class="btn-group" data-toggle="buttons">
+									<label class="btn btn-primary active">
+										<input type="radio" name="memGender" autocomplete="off" value="남자" checked="checked"/> 남자
+									</label>
+									<label class="btn btn-primary">
+										<input type="radio" name="memGender" autocomplete="off" value="여자" /> 여자
+									</label>
+								</div>	
+	  						</c:if>
 	  							
-	  							<c:if test="${mvo.memGender eq '여자' }">
-	  								<div class="form-group" style="text-align: center; margin: 0 auto;"></div>
-									<div class="btn-group" data-toggle="buttons">
-										<label class="btn btn-primary">
-											<input type="radio" name="memGender" autocomplete="off" value="남자" /> 남자
-										</label>
-										<label class="btn btn-primary active">
-											<input type="radio" name="memGender" autocomplete="off" value="여자" checked="checked" /> 여자
-										</label>
-									</div>	
-	  							</c:if>
-	  							
-	  						
-	  						
-	  						
-								  						
-	  						</td>
-	  					</tr>
-	  					<tr>
-	  						<td style="width: 110; vertical-align: middle;">이메일</td>
-	  						<td colspan="2"><input required="required" type="email" name="memEmail" class="form-control" placeholder="이메일을 입력하세요." maxlength="50" value="${mvo.memEmail}"></td>
-	  					</tr>
-	  					<tr>
-	  						<td colspan="3">
-	  							<span id="passMessage"></span>
-	  							<input type="submit" class="btn btn-primary btn-sm pull-right" value="등록">
-	  						</td>
-	  					</tr>
-	  				</table>
-	  			</form>
-	  		</div>
-	  		<div class="panel-footer">패널 푸터</div>		
+	  						<c:if test="${mvo.memGender eq '여자' }">
+	  							<div class="form-group" style="text-align: center; margin: 0 auto;"></div>
+								<div class="btn-group" data-toggle="buttons">
+									<label class="btn btn-primary">
+										<input type="radio" name="memGender" autocomplete="off" value="남자" /> 남자
+									</label>
+									<label class="btn btn-primary active">
+										<input type="radio" name="memGender" autocomplete="off" value="여자" checked="checked" /> <i class="fa-solid fa-person-dress"></i>
+									</label>
+								</div>	
+	  						</c:if>
+						</td>
+	  				</tr>
+	  				<tr>
+	  					<td style="width: 110; vertical-align: middle;"><i class="fa-regular fa-envelope"></i>이메일</td>
+	  					<td colspan="2"><input required="required" type="email" name="memEmail" class="form-control" placeholder="이메일을 입력하세요." maxlength="50" value="${mvo.memEmail}"></td>
+	  				</tr>
+	  				<tr>
+	  					<td colspan="3">
+	  						<span id="passMessage"></span>
+	  						<input type="submit" class="btn btn-primary btn-sm pull-right" value="등록">
+	  					</td>
+	  				</tr>
+	  			</table>
+	  		</form>
 	  	</div>
 	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+  
+		
+	<!-- 우측 여백 -->
+	<div class="item"></div>
+</div>
+
+
+<!-- 푸터 -->	
+<jsp:include page="../common/footer.jsp"></jsp:include>
 	
 	
 	
