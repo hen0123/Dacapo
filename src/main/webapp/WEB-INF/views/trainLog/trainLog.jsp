@@ -43,78 +43,80 @@
 	<script src="https://kit.fontawesome.com/e257908efc.js" crossorigin="anonymous"></script>
 	
 	<!-- fullcalendar 불러오기 -->
-	<script type="text/javascript">
-		
-	  	document.addEventListener('DOMContentLoaded', function() {
-	    var calendarEl = document.getElementById('calendar');
-	    var calendar = new FullCalendar.Calendar(calendarEl, {
-	    	plugsin: ['dayGrid', 'interaction','bootstrap'],
-	    	themeSystem: 'bootstrap',
-	    	displayEventTime:false,
-	    	eventDisplay:'block',
-	    	
-	    	// 한국 시간으로 설정(default)
-	    	timezone: 'local',
-	      	initialView: 'dayGridMonth',
-	      	headerToolbar: {
-	            left: 'prev,next today',
-	            center: 'title',
-	            right: 'addEventButton'
-	        },
-	        
-	        titleFormat : function(date) {
-				return date.date.year + '년 ' + (parseInt(date.date.month) + 1) + '월';
-			},
-			
-			// 날짜 클릭 시 이벤트 발생(테스트용으로 날짜 나오게 함) -> 훈련 로그 있으면 그 페이지로 이동하도록! 
-			// 페이지 이동 바로 어려우면 modal 창 만들어서 if문으로 없으면 없다 있으면 페이지 이동 
-			
+<!-- fullcalendar 불러오기 -->
+   <script type="text/javascript">
+      
+        document.addEventListener('DOMContentLoaded', function() {
+       var calendarEl = document.getElementById('calendar');
+       var calendar = new FullCalendar.Calendar(calendarEl, {
+          plugsin: ['dayGrid', 'interaction','bootstrap'],
+          themeSystem: 'bootstrap',
+          displayEventTime:false,
+          eventDisplay:'block',
+          
+          // 한국 시간으로 설정(default)
+          timezone: 'local',
+            initialView: 'dayGridMonth',
+            headerToolbar: {
+               left: 'prev,next today',
+               center: 'title',
+               right: 'addEventButton'
+           },
+           
+           titleFormat : function(date) {
+            return date.date.year + '년 ' + (parseInt(date.date.month) + 1) + '월';
+         },
+         
+         // 날짜 클릭 시 이벤트 발생(테스트용으로 날짜 나오게 함) -> 훈련 로그 있으면 그 페이지로 이동하도록! 
+         // 페이지 이동 바로 어려우면 modal 창 만들어서 if문으로 없으면 없다 있으면 페이지 이동 
+         
 
-			selectable : true, 
-			// droppable : true,
-			editable : true, // 달력 일자 드래그해서 이동 가능
-			
-			// 일정 데이터 추가 , DB의 event를 가져오려면 JSON 형식으로 변환해 events에 넣어주면된다.
-			events:[ 
-				
-				<% ArrayList<Diary> list = (ArrayList<Diary>) request.getAttribute("list");%>
-	            <% if (!list.isEmpty()) { %>
-	               <% for (Diary vo : list) { %>
-	               {
-	                       title:'<%= vo.getDiaryTitle() %>',                  
-	                       description: '<%= vo.getDiaryContent() %>',
-	                       start:'<%= vo.getDiaryStart() %>',
-	                       
-	                       <% 
-	                          LocalDate localDate = LocalDate.parse(vo.getDiaryEnd()); 
-	                          LocalDate oneDayPlusLocalDate = localDate.plusDays(1);
-	                          String realEndDate = oneDayPlusLocalDate.toString();
-	                       %>
-	                       
-	                       end:'<%= realEndDate %>',
-	                       color:'<%= vo.getDiaryColor() %>'
-	                   },
-	               <% } %>
-	            <% } %>
+         selectable : true, 
+         // droppable : true,
+         editable : true, // 달력 일자 드래그해서 이동 가능
+         
+         // 일정 데이터 추가 , DB의 event를 가져오려면 JSON 형식으로 변환해 events에 넣어주면된다.
+         events:[ 
+            
+            <% ArrayList<Diary> list = (ArrayList<Diary>) request.getAttribute("list");%>
+               <% if (!list.isEmpty()) { %>
+                  <% for (Diary vo : list) { %>
+                  
+                  {      
+                          title:'<%= vo.getDiaryTitle() %>',                  
+                          description: '<%= vo.getDiaryContent() %>',
+                          start:'<%= vo.getDiaryStart() %>',
+                          
+                          <% 
+                             LocalDate localDate = LocalDate.parse(vo.getDiaryEnd()); 
+                             LocalDate oneDayPlusLocalDate = localDate.plusDays(1);
+                             String realEndDate = oneDayPlusLocalDate.toString();
+                          %>
+                          
+                          end:'<%= realEndDate %>',
+                          color:'<%= vo.getDiaryColor() %>'
+                      },
+                  <% } %>
+               <% } %>
             ],
 
             // 일정 추가
-			customButtons: {
+         customButtons: {
                 addEventButton: { // 추가한 버튼 설정
                     text : "일정추가",  // 버튼 내용
                     click : function(){ // 버튼 클릭 시 이벤트 추가
-                    	
-                    	// modal 빈 값으로 초기화... 
-                    	var title = $("#calendar_title").val('');
-                    	var content = $("#calendar_content").val('');
+                       
+                       // modal 빈 값으로 초기화... 
+                       var title = $("#calendar_title").val('');
+                       var content = $("#calendar_content").val('');
                         var start_date = $("#calendar_start_date").val('');
                         var end_date = $("#calendar_end_date").val('');
                         var color = $("input:radio[name=calendar_color]:checked").val('');
 
-                    	$("#calendarModal").modal("show"); // modal 나타내기                    	
+                       $("#calendarModal").modal("show"); // modal 나타내기                       
                    
-                        $("#addCalendar").on("click",function(){  // modal의 추가 버튼 클릭 시	
-                        	var title = $("#calendar_title").val();
+                        $("#addCalendar").on("click",function(){  // modal의 추가 버튼 클릭 시   
+                           var title = $("#calendar_title").val();
                             var content = $("#calendar_content").val();
                             var start = $("#calendar_start_date").val();
                             var end = $("#calendar_end_date").val(); // 시간 개념 때문에 +1 해줘야 내가 선택한 날이랑 맞게 표시됨!
@@ -143,19 +145,19 @@
                                 }//전송할 객체 생성
                                
 
-                            	console.log(obj); //서버로 해당 객체를 전달해서 DB 연동 가능
+                               console.log(obj); //서버로 해당 객체를 전달해서 DB 연동 가능
                             
                             
-	                            // 일정 등록
-	                            calendar.addEvent(obj);
-	                            
-	                            // 일정 등록 후 모달 창 닫기
-	                            $('#calendarModal').modal('hide');
-	                            
-	 
-	                            // 다음 일정 등록 전 데이터 비우기
-	                            // 없으면 연속 등록한 횟수만큼 일정이 등록됨
-	                           
+                               // 일정 등록
+                               calendar.addEvent(obj);
+                               
+                               // 일정 등록 후 모달 창 닫기
+                               $('#calendarModal').modal('hide');
+                               
+    
+                               // 다음 일정 등록 전 데이터 비우기
+                               // 없으면 연속 등록한 횟수만큼 일정이 등록됨
+                               calendar.init();
  
                             }
                         });
@@ -163,7 +165,7 @@
                 }
             },
             
-         	// 이벤트 눌렀을 때 삭제
+            // 이벤트 눌렀을 때 삭제
             // ajax로 컨트롤러 매핑 -> memID값, 일정의 고유값을 넘겨주고
             // controller 로직에서 데이터베이스에서 해당 일정을 지워준다.
             eventClick: function(arg){
@@ -179,8 +181,6 @@
                if(strstartMonth .length<2) {
                   var startMonth = '0'+strstartMonth;
                }
-               
-               
                
                if(strstartDate.length<2) {
                   var startDate = '0'+strstartDate;
@@ -229,7 +229,10 @@
                     data : mdata,
                     method : "post",
                     success : function(data){
-                  
+
+           
+                  alert("success");
+
                },
                     error : function(){ alert("error") }
               });
@@ -247,9 +250,11 @@
                }
             },
             
+            
+            
             eventAdd: function () {
-				console.log("이벤트에드 작동");
-				let title = $('#calendar_title').val();
+            console.log("이벤트에드 작동");
+            let title = $('#calendar_title').val();
                 let description = $('#calendar_content').val();
                 let start = $('#calendar_start_date').val();
                 let end = $('#calendar_end_date').val();
@@ -340,6 +345,57 @@
 	                   
 	            }
 			},
+         },
+         
+         
+         dateClick: function(info) {
+               
+            console.log("아이고");
+               console.log(info.dateStr);
+               
+               dData = {"logDate" : info.dateStr, "memID" : "${mvo.memID}"};
+               
+               $.ajax({
+                       url : "${contextPath}/oneTrainLog",
+                       data : dData,
+                       dataType : "json",
+                       method : "get",
+                       success : getLog,
+                       error : function(){ alert("error") }
+               });
+                       
+               function getLog(data) {
+                  
+                  $("#calendar").hide();
+                  
+                  $.each(data, function(index, obj){
+                         console.log(obj.logMemo);
+                         $("#logData").append(obj.logMemo);
+                      });
+                  
+                      let listHtml = "<span style='border:1px solid black;'>전체 스윙통계 넣어줘야함</span><br>";
+                      listHtml += "<span style='border:1px solid black;'>오늘의 스윙횟수 넣어줘야함</span><br>";
+                      listHtml += "<span style='border:1px solid black;'>오늘의 평균점수 넣어줘야함</span><br>";
+                      listHtml += "<span style='border:1px solid black;'>오늘의 최고점수 넣어줘야함</span><br>";
+                      listHtml += "<span style='border:1px solid black;'>오늘의 사진 넣어줘야함</span><br>";
+                      
+                      listHtml += "<button onclick='MemoWrite()'>작성하기</button>"
+                      listHtml += "<span style='border:1px solid black;'>";
+                      listHtml += "<input id='write' type='text' value='아아아' readonly>";
+                      listHtml += "</span>";
+                      
+                      
+                       
+                     $("#logData").html(listHtml);
+                     $("#logData").css("display","block");
+                     
+                      
+                      
+                      
+                      
+                      
+               }
+         },
             
             /* 마우스 오버 시 세부내용 팝업 */
             eventDidMount: function (info) {
@@ -351,16 +407,17 @@
                 placement: 'bottom',
                 trigger: 'hover',
                 container: 'body',
-	    		});	
+             });   
            },
            
-	    });
-		
-	    // 달력 불러오기
-	    calendar.render();
-	  });
-
-	</script>
+       });
+      
+       // 달력 불러오기
+       calendar.render();
+     });
+        
+        
+   </script>
 	
 
 	<style>
@@ -694,7 +751,8 @@
 
 <meta charset="UTF-8">
 
-<title>라인드라이브</title>
+<title>LineDrive
+</title>
 </head>
 <body>
 <!-- 헤더 -->

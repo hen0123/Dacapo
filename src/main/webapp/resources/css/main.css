@@ -513,6 +513,11 @@ input[type=file]::file-selector-button  {
 	background : gray;
 }
 
+.result-img img {
+	width : 550px;
+	height : 300px;
+}
+
 .result-content {
 	float : left;
 	width : 362px;

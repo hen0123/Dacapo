@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>라인드라이브</title>
+<title>LineDrive</title>
 <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
 <script src="https://kit.fontawesome.com/e257908efc.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
@@ -64,7 +64,7 @@ window.onload=function(){
 	<div id="posture-body">
 		<div class="upload-container">
 			<div class="upload" id="add-btn"><span class="upload-text">영상업로드</span></div>
-			<div onclick="location.href='${contextPath}/posture.result'" class="posture-button">진단하기</div>
+			<div onclick="location.href='${contextPath}/posture.run'" class="posture-button">진단하기</div>
 		</div>
 		<div class="sign-container">
 			<p id="header">!동영상 촬영 기준</p>

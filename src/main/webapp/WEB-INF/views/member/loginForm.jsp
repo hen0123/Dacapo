@@ -6,8 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>라인드라이브</title>
-<link rel="stylesheet" href="resources/css/main.css">
+<title>LineDrive</title>
+<link rel="stylesheet" href="${contextPath}/resources/css/main.css">
 <script src="https://kit.fontawesome.com/e257908efc.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

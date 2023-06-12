@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mysql.cj.Session;
@@ -53,16 +55,11 @@ public class PostureController {
          return "posture/posture";
       }
       
-      @RequestMapping("/posture_upload")
-      public String upload() {
-         return "posture/posture_upload";
+      public void addResourceHandlers(ResourceHandlerRegistry registry) {
+          registry.addResourceHandler("/download/**")
+                  .addResourceLocations("file:///C:/Users/Hyuni/Desktop/Dacapo/LineDrive/code/video/"); //리눅스 root에서 시작하는 폴더 경로
       }
-      
-      @GetMapping("/posture.success")
-      public String success(){
-         return "posture/posture_success";
-          }
-      
+           
       @PostMapping("/posture.action")
        public String upload(HttpServletRequest request, RedirectAttributes rttr, HttpSession session) throws IOException {
          // 파일 업로드new 
@@ -123,8 +120,13 @@ public class PostureController {
            String[] Swing = comment[5].split(":",2);
            String[] Impact = comment[6].split(":",2);
            String[] Follow = comment[7].split(":",2);
-           String[] score = comment[8].split(":");
-         
+           String[] num = comment[8].split(":");
+           
+           String score_1 = num[1];
+           String score[] = score_1.split("}");
+           System.out.println("score_1: " + score_1);
+           
+           
            // Posture 객체 생성
            Posture vo = new Posture();
            Member mvo = (Member)session.getAttribute("mvo");
@@ -139,14 +141,20 @@ public class PostureController {
            vo.setSwing(Swing[1]);
            vo.setImpact(Impact[1]);
            vo.setFollowThrough(Follow[1]);
-           vo.setScore(score[1]);
+           vo.setScore(score[0]);
            posturemapper.run(vo);
+    	 
            
-           return "redirect:/posture.result";
+           return  "redirect:/posture.result";
       }
       
+      
       @RequestMapping("/posture.result")
-      public String result() {
-         return "posture/posture_result";
+      public String end(HttpServletRequest request, RedirectAttributes rttr, HttpSession session, Model model) {
+    	  String video = (String)session.getAttribute("video");
+    	  Posture vo = new Posture();
+    	  vo = posturemapper.result(video);
+   	      model.addAttribute("vo",vo);
+   	      return "posture/posture_result";
       }
 }

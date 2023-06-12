@@ -32,8 +32,6 @@ public class TrainLogController {
 	      return "trainLog/trainLog";
 	   }
 	 
-		
-		
 		// 달력에 데이터 저장
 		@RequestMapping("/trainDiary")
 		public void trainDiary(Diary diary) {
@@ -53,9 +51,11 @@ public class TrainLogController {
 		   return list;
 		}
 		
+
 		// 달력에 데이터 삭제
-	      @ResponseBody
-	      @RequestMapping("/deleteDiary")
+		@ResponseBody
+	    @RequestMapping("/deleteDiary")
+
 	      public void deleteDiary(Diary diary) {
 	         
 	         System.out.println("다이어리 삭제 매핑 잘됨.");
@@ -68,6 +68,4 @@ public class TrainLogController {
 	         
 	         
 	         }
-		
-		
 }

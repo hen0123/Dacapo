@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<title>라인드라이브</title>
+<title>LineDrive</title>
 </head>
 <!-- 모달 스타일 -->
 <style>
@@ -55,8 +55,8 @@
           pg: "T5102001",
           pay_method: "card",
           merchant_uid: "merchant47"+payDate,
-          name: "이름 : 테스트",
-          amount: 10,
+          name: "타격 코치 훈련권",
+          amount: 100000,
           buyer_email: "${memEmail}",
           buyer_name: "${mvo.memName}",
         },
@@ -119,7 +119,7 @@ function goModal(coachIdx) {
                 $("#modalImg").append("<img class='coach-modal-img' src='${contextPath}/resources/images/coPicture/"+ data.img +"'>");
                 
              },
-             erro : function(){ alert("error") }
+             error : function(){ alert("error") }
           });
        };
        

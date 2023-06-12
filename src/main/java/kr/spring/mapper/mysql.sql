@@ -59,7 +59,7 @@ create table posture(
    Swing varchar(100),   
    Impact varchar(100),   
    FollowThrough varchar(100),
-   score varchar(20),
+   score varchar(10),
    comment_1 varchar(200),
    comment_2 varchar(200),
    comment_3 varchar(200),

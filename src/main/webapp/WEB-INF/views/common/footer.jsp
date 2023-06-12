@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>라인드라일브</title>
+<title>LineDrive</title>
 <style>
 .footer {
 	width : 100%;

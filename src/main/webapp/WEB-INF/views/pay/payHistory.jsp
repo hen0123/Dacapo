@@ -9,10 +9,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<title>LineDrive</title>
+<style type="text/css">
+   table, tr, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+   }
+
 <title>라인드라이브</title>
 <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
 <script src="https://kit.fontawesome.com/e257908efc.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </style>
 </head>
 <body>

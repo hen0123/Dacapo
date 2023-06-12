@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>LineDrive</title>
 <link rel="stylesheet" href="${contextPath}/resources/css/nav.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://kit.fontawesome.com/e257908efc.js" crossorigin="anonymous"></script>

@@ -20,5 +20,4 @@
    	<delete id="deleteDiary" parameterType="kr.spring.entity.Diary">
          delete from diary where memID = #{memID} and DiaryTitle = #{DiaryTitle} and DiaryContent = #{DiaryContent} and DiaryStart = #{DiaryStart} and DiaryEnd = #{DiaryEnd} 
     </delete>
-
 </mapper>
