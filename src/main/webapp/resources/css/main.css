@@ -446,6 +446,11 @@ body { margin : 0; font-family: 'TheJamsil'; }
 	background : gray;
 }
 
+.result-img img {
+	width : 550px;
+	height : 300px;
+}
+
 .result-content {
 	float : left;
 	width : 362px;

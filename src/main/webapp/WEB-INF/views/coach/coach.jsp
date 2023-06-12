@@ -119,7 +119,7 @@ function goModal(coachIdx) {
                 $("#modalImg").append("<img class='coach-modal-img' src='${contextPath}/resources/images/coPicture/"+ data.img +"'>");
                 
              },
-             erro : function(){ alert("error") }
+             error : function(){ alert("error") }
           });
        };
        

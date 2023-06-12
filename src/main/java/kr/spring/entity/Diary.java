@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 public class Diary {
 	
-	private String DiaryIdx;
+	private int DiaryIdx;
 	private String DiaryTitle;
 	private String DiaryStart;
 	private String DiaryEnd;
