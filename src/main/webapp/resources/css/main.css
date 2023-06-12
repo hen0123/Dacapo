@@ -174,12 +174,24 @@ body { margin : 0; font-family: 'TheJamsil'; }
 	background : #34347D;
 }
 
+#nextText i, #prevText i {
+	margin : 0 auto;
+	margin-top : 180px;
+	color : #34347D;
+}
 
+#prevText i {
+	margin-left : 100px;
+}
+
+#nextText i:hover, #prevText i:hover {
+	color : #AA1D20;
+}
 /* 메인-버튼 */
 
 .button-container{
 	display : flex;
-	justify-content: space-between;
+	justify-content : space-between;
 }
 
 .button-container a{
@@ -289,6 +301,12 @@ body { margin : 0; font-family: 'TheJamsil'; }
 	cursor : pointer;
 }
 
+.posture-button:hover {
+	background : #34347D;
+	color : #fff;
+	
+}
+
 .sign-container {
 	width : 50%;
 	height : 100%;
@@ -338,7 +356,7 @@ body { margin : 0; font-family: 'TheJamsil'; }
 	left: 50%;
 	
 	width: 500px;
-	height: 200px;
+	height: 400px;
 	
 	text-align: center;
 	
@@ -354,6 +372,7 @@ body { margin : 0; font-family: 'TheJamsil'; }
 	padding: 10px;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 	vertical-align : middle;
@@ -370,7 +389,7 @@ body { margin : 0; font-family: 'TheJamsil'; }
 	justify-content: center;
 	align-items: center;
 	border-radius: 50%;
-	background-color: #34347D;
+	background-color: #AA1D20;
 	color : #fff;
 	float : left;
 	margin-right : 20px;
@@ -379,17 +398,64 @@ body { margin : 0; font-family: 'TheJamsil'; }
 .logo-circle i {
 	margin : 0 auto;
 }
+
+.m_head {
+	margin : 10px;
+}
       
 .m_body{
 	height: 80%;
-	padding: 20px;
+}
+
+input[type=file]::file-selector-button  {
+	width : 80px;
+	height : 25px;
+	color : #fff;
+	background : #AA1D20;
+	border : none;
+	border-radius : 5px;
+}
+
+.m_body button {
+	width : 120px;
+	height : 30px;
+	background : #EDEDED;
+	border : none;
+	border-radius : 5px;
+	color : #fff;
+	margin-top : 25px;
+}
+
+.m_body button:hover {
+	background : #AA1D20;
+}
+
+.m_body button i {
+	color : #fff;
+}
+
+.m_body_info {
+	font-weight : 100;
+}
+
+.dropBox i {
+	margin-top : 65px;
+	color : #EDEDED;
+}
+
+.dropBox {
+	width : 400px;
+	height : 200px;
+	border : 3px dashed #EDEDED;
+	text-align : center;
+	margin : 0 auto;
 }
 
 .modal-title{
-	font-size: 25px;
-	font-weight: 300;
-	margin : 0 auto;
-	line-height : 1.8;
+	font-size: 30px;
+	font-weight: 400;
+	color : #AA1D20;
+	height : 50px;
 }
       
 .close_btn{
@@ -430,6 +496,7 @@ body { margin : 0; font-family: 'TheJamsil'; }
 	background-color: rgb(50, 77, 158);
 	color: white;
 }
+
 
 /* 자세진단-result */
 .result-main {
@@ -500,16 +567,17 @@ body { margin : 0; font-family: 'TheJamsil'; }
 
 .content3 {
 	font-weight : 100;
+	overflow-wrap: break-word;
 }
 
 .result-button {
 	width : 100%;
 	height : 100px;
 	text-align : center;
+	padding-top : 30px;
 }
 
 .result-btn {
-	margin-top : 30px;
 	margin-left : 5px;
 	margin-right : 5px;
 	width : 180px;
@@ -976,7 +1044,7 @@ select option[value=""][disabled] {
 
 .coach-modal button:hover {
 	background : #AA1D20;
-	filter:drop-shadow(5px 5px 10px gray);
+	filter:drop-shadow(0px 0px 5px #757575);
 }
 
 /* 마이페이지 */
@@ -1027,3 +1095,74 @@ select option[value=""][disabled] {
 	font-size : 25px;
 }
 
+/* 마이페이지-결제내역 */
+
+.table-div {
+	padding : 0;
+	margin : 0;
+	width : 800px;
+	height : 100%;
+	position : relative;
+}
+
+.style-table {
+	margin : 0 auto;
+	margin-top : 30px;
+    width : 800px;
+    border-top : 1px solid #34347D;
+    border-collapse: collapse;
+    
+    font-family: 'TheJamsil';
+    font-size : 15px;
+    font-weight : 200;
+    text-align : center;
+}
+
+.style-table thead {
+	font-size : 20px;
+	font-weight : 400;
+	background : #34347D;
+	border-radius : 10px;
+	color : #fff;
+	table-layout: fixed;
+	border-spacing: 0;
+	border-collapse : separate;
+}
+
+.total {
+	font-family: 'TheJamsil';
+	font-size : 15px;
+    font-weight : 200;
+    
+    position : absolute;
+    right : 0px;
+}
+
+.style-table th, tr {
+	border-bottom: 1px solid #444444;
+	padding : 30px;
+}
+
+.style-table td {
+	padding : 10px;
+}
+
+/* 회원정보 수정 */
+
+.memberdata-container {
+	width : 800px;
+	height : 100%;
+	margin : 0 auto;
+	margin-top : 30px;
+}
+
+.memberdata-table {
+	border : 1px solid black;
+	width : 100%;
+	height : 100%;
+	padding : 10px;
+	font-family: 'TheJamsil';
+	font-weight : 200;
+	font-size : 15px;
+	text-align : center;
+}

@@ -10,8 +10,9 @@
 <meta charset="UTF-8">
 <title>LineDrive</title>
 <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
+<script src="https://kit.fontawesome.com/e257908efc.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
-//click on 라벨 추가 모달 열기
+// 모달 열기
 $(document).on('click', '#add-btn', function (e) {
   console.log("click event");
   $('#modal').addClass('show');
@@ -24,6 +25,25 @@ $(document).on('click', '#close_btn', function (e) {
   $('#modal').removeClass('show');
 
 });
+
+$(document).on('click','.dropBox', function(){
+	console.log("dropBox event");
+	document.getElementById('file').click();
+});
+
+window.onload=function(){
+	target=document.getElementById('file'); // file 아이디 선언
+	target.addEventListener('change',function(){ // change 함수
+		
+		if(target.value.length){ // 파일 첨부인 상태일경우 파일명 출력
+			$('#fileName').html(target.files[0].name);
+		}else{ //버튼 클릭후 취소(파일 첨부 없을 경우)할때 파일명값 안보이게
+			$('#fileName').html('');
+		}
+		
+	});
+}
+
 </script>
 
 </head>
@@ -62,7 +82,7 @@ $(document).on('click', '#close_btn', function (e) {
 				<span class="logo-circle">
 					<i class="fa-regular fa-folder-open fa-xl"></i>
 				</span>
-				<span class="modal-title">파일 업로드</span>
+				<span class="modal-title">영상 업로드</span>
 			</div>
 			<button class="btn-close" id="close_btn">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" fill="var(--c-text-secondary)"/></svg>
@@ -70,10 +90,18 @@ $(document).on('click', '#close_btn', function (e) {
 	    </div>
 	    <div class="m_body">
 			<form action="${contextPath}/posture.action" method ="post" enctype = "multipart/form-data">
-					<input type ="file" name = "file"/>
-					<input class = "btn-secondary" type = "reset" name = "Cancel">
-					<input class = "btn-primary" type ="submit" name ="UploadFile">
+				<p class="m_body_info">※ 영상 파일은 mp4형식만 지원합니다.</p>
+				<div class="dropBox">
+					<div>
+						<i class="fa-regular fa-folder-open fa-4x"></i>
+					</div>
+					<p id="fileName" style="display:inline-block; color:#757575;"></p>
+				</div>
+				<input id="file" type ="file" name="file" onchange="readURL(this);" style="display:none;">
+
+				<button type="submit" name="UploadFile">업로드</button>
 			</form>
+			
 	    </div>
 	  </div>
 	</div>

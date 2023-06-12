@@ -26,6 +26,7 @@
 
 <!-- 바디 -->
 <div class="container">
+
    <!-- 좌측 여백 -->
    <div class="item"></div>
    
@@ -56,6 +57,37 @@
    </div>   
    <!-- 우측 여백 -->
    <div class="item"></div>
+
+	<!-- 좌측 여백 -->
+	<div class="item"></div>
+	
+	<!-- 메인공간 -->
+	<div class="item">
+		<p class="title">자세진단</p>
+			<div class="result-main">
+				<div class="result-img"><img>이미지공간</div>
+				<div class="result-content">
+					<div class="content1">
+						<div class="score">
+							<span class="score1">전체 점수</span> <span class="score2">70</span>
+						</div>
+					</div>
+					<div class="content2">
+						Comment.
+						<div class="content3">피드백 내용삽입</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="result-button">
+				<button class="result-btn">Take-back</button>
+				<button class="result-btn">Swing</button>
+				<button class="result-btn">Impact</button>
+				<button class="result-btn">Follow-through</button>
+			</div>
+	</div>  
+	<!-- 우측 여백 -->
+	<div class="item"></div>
 </div>
 
 <!-- 푸터 -->   
