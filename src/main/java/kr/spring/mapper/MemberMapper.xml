@@ -51,19 +51,4 @@
 	<delete id="memDelete" parameterType="String">
       delete from member where memID = #{memID}
    	</delete>
-   	
-   	<!-- 최근 일자 불러오기 -->
-     <select id="recentDate" parameterType="String" resultType="String">
-     	select train_date from posture where memID = #{memID} order by train_date desc limit 1;
-     </select>
-     
-     <!-- 전체 스윙 카운트 -->
-     <select id="countSwing" parameterType="String" resultType="int">
-     	select count(*) from posture where memID = #{memID} ;
-     </select>
-     
-     <!-- 훈련일수 -->
-     <select id="countDate" parameterType="String" resultType="int">
-     	select count(distinct DATE_FORMAT(train_date, '%Y/%M/%D')) from posture where memID = #{memID};
-     </select>
 </mapper>
