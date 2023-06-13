@@ -449,6 +449,7 @@ input[type=file]::file-selector-button  {
 	border : 3px dashed #EDEDED;
 	text-align : center;
 	margin : 0 auto;
+	cursor : pointer;
 }
 
 .modal-title{
@@ -1053,9 +1054,10 @@ select option[value=""][disabled] {
 	background : url("../images/icon-mypage1.png") no-repeat;
 	background-position:center;
 	background-size : 130px 85px;
-	width : 140px;
+	width : 130px;
 	height : 90px;
 	text-align : center;
+	padding-right : 10px;
 }
 
 .my-information-img2 {
@@ -1268,7 +1270,7 @@ select option[value=""][disabled] {
 
 .memberdata-age input {
 	border : 0;
-	width : 50px;
+	width : 130px;
 	color : #AA1D20;
 }
 
