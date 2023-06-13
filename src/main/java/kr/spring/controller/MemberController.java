@@ -27,6 +27,8 @@ public class MemberController {
 	@Autowired
 	private MemberMapper memberMapper;
 	
+
+	
 	// 회원프로필 사진 등록 기능 요청
 	@RequestMapping("/imageUpload.do")
 	public String imageUpload(HttpServletRequest request, RedirectAttributes rttr, HttpSession session) throws IOException {
@@ -230,25 +232,29 @@ public class MemberController {
 	}
 	
 	// 정보수정 페이지 이동 요청
+
 	 @RequestMapping("/memberModify.do/{memID}")
 	 public String memModify(@PathVariable("memID") String memID, HttpServletRequest request, Model model) {
 		 
-		 // 통계정보 뿌리기
-	      // 최근 진단일
-	      String date = (String)memberMapper.recentDate(memID);
-	      request.setAttribute("date", date);
-	      
-	      String recent = date.substring(5, 10).replace("-", ".");
-	      model.addAttribute("recent",recent);
-	      
-	      // 스윙횟수
-	      int countSwing = memberMapper.countSwing(memID);
-	      model.addAttribute("countSwing", countSwing);
-	      
-	      // 훈련일수
-	      int countDate = memberMapper.countDate(memID);
-	      model.addAttribute("countDate", countDate);
-	      
+		System.out.println("출력");
+		
+		// 통계정보 뿌리기
+		// 최근 진단일
+		String date = (String)memberMapper.recentDate(memID);
+		request.setAttribute("date", date);
+		
+		String recent = date.substring(5, 10).replace("-", ".");
+		model.addAttribute("recent",recent);
+		
+		// 스윙횟수
+		int countSwing = memberMapper.countSwing(memID);
+		model.addAttribute("countSwing", countSwing);
+		
+		// 훈련일수
+		int countDate = memberMapper.countDate(memID);
+		model.addAttribute("countDate", countDate);
+		
+
 	    return "member/memberModify";
 	 }
 	 

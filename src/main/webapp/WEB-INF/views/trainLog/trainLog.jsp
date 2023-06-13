@@ -100,26 +100,24 @@
                   <% } %>
                <% } %>
                
-      
-               <%  ArrayList<Posture> Plist = (ArrayList<Posture>) request.getAttribute("Plist"); %>
-                <% if (!list.isEmpty()) { %>
-                   <% for (Posture pvo : Plist) { %>
+               
+               <%  ArrayList<String> plist = (ArrayList<String>) request.getAttribute("plist"); %>
+               	<% if (!list.isEmpty()) { %>
+                   <% for (String train : plist) { %>
+                  
+               
+              
+          			{
+          				title : '훈련',
+          				description : '훈련확인',
+          				start : '<%= train %>',
+          				end : '<%= train %>',
+          				color : '#AA1D20'
+          			},
 
-                   {
-                      title : '훈련',
-                      description : '훈련확인',
-                      start : '<%= pvo.getTrain_date() %>',
-                      end : '<%= pvo.getTrain_date() %>',
-                      color : '#AA1D20'
-                   },
-                
-                              
-                <% } %>
-          <% } %>
-             
-               
-               
-               
+                    <% } %>
+                   <% } %>
+
             ],
 
             // 일정 추가
@@ -291,6 +289,8 @@
          
          dateClick: function(info) {
                
+               console.log("아이고");
+
                console.log(info.dateStr);
                
                dData = {"logDate" : info.dateStr, "memID" : "${mvo.memID}"};
@@ -305,10 +305,13 @@
                });
                        
                function getLog(data) {
+            	   
+            	   
                   
                   $("#calendar").hide();
                   
                   $.each(data, function(index, obj){
+                	  	
                          console.log(obj.logMemo);
                          $("#logData").append(obj.logMemo);
                       });
@@ -784,14 +787,17 @@
 		.button-list {
 		  text-align: center;
 		}
+
    </style>
 
 
 <meta charset="UTF-8">
-
 <title>LineDrive</title>
 </head>
 <body>
+<!-- 로딩화면 -->
+<jsp:include page="../common/loading.jsp"></jsp:include>
+
 <!-- 헤더 -->
 <jsp:include page="../common/header.jsp"></jsp:include>
 <!-- 바디 -->

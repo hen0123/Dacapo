@@ -2,9 +2,11 @@ package kr.spring.controller;
 
 import java.util.List;
 
+import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,8 +32,9 @@ public class TrainLogController {
 	      List<Diary> list = trainDiary.getDiary(memID);
 	      model.addAttribute("list", list);
 	      
-	      List<Posture> Plist = trainDiary.getTrain(memID);
-	      model.addAttribute("Plist", Plist);
+	      List<Posture> plist = trainDiary.getTrain(memID);
+	      model.addAttribute("plist", plist);
+	      System.out.println(plist);
 
 	      return "trainLog/trainLog";
 	   }

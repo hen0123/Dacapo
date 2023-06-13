@@ -56,6 +56,9 @@ p {
 }
 </style>
 
+<!-- 로딩화면 -->
+<jsp:include page="../common/loading.jsp"></jsp:include>
+
 <!-- 헤더 -->
 <jsp:include page="../common/header.jsp"></jsp:include>
 
@@ -67,6 +70,7 @@ p {
 <table style="border-radius: 15px; max-width: 850px; margin: auto; background-color: #EAEAEA">
 	<tr><td><br></td></tr>
 	<tr>
+
 	<td class="my-information-img1"><p class="my-information-content">${recent}</p></td>
 	<td class="my-information-img2"><p class="my-information-content">${countSwing}</p></td>
 	<td class="my-information-img3"><p class="my-information-content">${countDate}</p></td>

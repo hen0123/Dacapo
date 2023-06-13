@@ -22,6 +22,14 @@ select * from log;
 
 drop table log;
 
+select * from posture;
+DELETE FROM posture;
+
+select distinct DATE_FORMAT(train_date, '%Y/%M/%D') from posture;
+
+select * from posture;
+
+
 insert into log(logDate, logMemo, memID) 
 values('2023-06-07', '디비 끊어졌다.(06.07)1', 'a');
 
@@ -264,20 +272,6 @@ create table diary (
 select * from diary;
 
 DROP TABLE diary;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -18,4 +18,6 @@ public interface TrainDiary {
 	
 	List<Posture> getTrain(String memID);
 
+	List<Posture> getTrain(String memID);
+
 }
