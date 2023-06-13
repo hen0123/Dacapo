@@ -66,9 +66,9 @@ p {
 <table style="border-radius: 15px; max-width: 850px; margin: auto; background-color: #EAEAEA">
 	<tr><td><br></td></tr>
 	<tr>
-	<td class="my-information-img1"><p class="my-information-content">05.01</p></td>
-	<td class="my-information-img2"><p class="my-information-content">261</p></td>
-	<td class="my-information-img3"><p class="my-information-content">21</p></td>
+	<td class="my-information-img1"><p class="my-information-content">${ recent }</p></td>
+	<td class="my-information-img2"><p class="my-information-content">${ countSwing }</p></td>
+	<td class="my-information-img3"><p class="my-information-content">${ countDate }</p></td>
 	</tr>
 	<tr>
 	<th><p class="my-information">최근진단일</p></th>

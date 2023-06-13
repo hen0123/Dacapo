@@ -2,15 +2,18 @@ package kr.spring.controller;
 
 import java.util.List;
 
+import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.spring.entity.Diary;
 import kr.spring.entity.Log;
+import kr.spring.entity.Posture;
 import kr.spring.mapper.TrainDiary;
 
 @Controller
@@ -29,10 +32,14 @@ public class TrainLogController {
 	      List<Diary> list = trainDiary.getDiary(memID);
 	      model.addAttribute("list", list);
 	      
+	      List<Posture> plist = trainDiary.getTrain(memID);
+	      model.addAttribute("plist", plist);
+	      System.out.println(plist);
+
 	      return "trainLog/trainLog";
 	   }
 	 
-		
+
 		
 		// 달력에 데이터 저장
 		@RequestMapping("/trainDiary")

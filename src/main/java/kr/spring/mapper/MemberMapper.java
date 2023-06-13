@@ -21,4 +21,13 @@ public interface MemberMapper {
 
 	public void memDelete(String memID);
 
+	public String recentDate(String memID);
+
+	public int countSwing(String memID);
+
+	public int countDate(String memID);
+	
+	
+	
+
 }

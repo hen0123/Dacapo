@@ -5,6 +5,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.time.*" %>
 <%@ page import="kr.spring.entity.Diary" %>
+<%@ page import="kr.spring.entity.Posture" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +44,7 @@
 	<script src="https://kit.fontawesome.com/e257908efc.js" crossorigin="anonymous"></script>
 	
 	<!-- fullcalendar 불러오기 -->
-<!-- fullcalendar 불러오기 -->
+
    <script type="text/javascript">
       
         document.addEventListener('DOMContentLoaded', function() {
@@ -98,6 +99,24 @@
                       },
                   <% } %>
                <% } %>
+               
+               <%  ArrayList<String> plist = (ArrayList<String>) request.getAttribute("plist"); %>
+               	<% if (!list.isEmpty()) { %>
+                   <% for (String train : plist) { %>
+                  
+               
+              
+          			{
+          				title : '훈련',
+          				description : '훈련확인',
+          				start : '<%= train %>',
+          				end : '<%= train %>',
+          				color : '#AA1D20'
+          			},
+
+                    <% } %>
+                   <% } %>
+
             ],
 
             // 일정 추가
@@ -234,15 +253,6 @@
                     error : function(){ alert("error") }
               });
                
-               
-               
-               
-                  
-                  
-               
-                  
-                  
-                  
                   
                }
             },
@@ -280,7 +290,7 @@
          
          dateClick: function(info) {
                
-            console.log("아이고");
+               console.log("아이고");
                console.log(info.dateStr);
                
                dData = {"logDate" : info.dateStr, "memID" : "${mvo.memID}"};
@@ -295,29 +305,49 @@
                });
                        
                function getLog(data) {
+            	   
+            	   
                   
                   $("#calendar").hide();
                   
                   $.each(data, function(index, obj){
+                	  	
                          console.log(obj.logMemo);
                          $("#logData").append(obj.logMemo);
                       });
                   
-                      let listHtml = "<span style='border:1px solid black;'>전체 스윙통계 넣어줘야함</span><br>";
-                      listHtml += "<span style='border:1px solid black;'>오늘의 스윙횟수 넣어줘야함</span><br>";
-                      listHtml += "<span style='border:1px solid black;'>오늘의 평균점수 넣어줘야함</span><br>";
-                      listHtml += "<span style='border:1px solid black;'>오늘의 최고점수 넣어줘야함</span><br>";
-                      listHtml += "<span style='border:1px solid black;'>오늘의 사진 넣어줘야함</span><br>";
-                      
-                      listHtml += "<button onclick='MemoWrite()'>작성하기</button>"
-                      listHtml += "<span style='border:1px solid black;'>";
-                      listHtml += "<input id='write' type='text' value='아아아' readonly>";
-                      listHtml += "</span>";
-                      
-                      
-                       
-                     $("#logData").html(listHtml);
-                     $("#logData").css("display","block");
+                  let listHtml = "<span class='title'>훈련일지</span><br>";
+                  listHtml += "<div class='logData-container'>";
+                  listHtml += "<div class='logData-Date'>";
+                  listHtml += "일자 "+info.dateStr;
+                  listHtml += "</div>";
+                  listHtml += "<div class='logData-trainLog'>";
+                  listHtml += "<div class='main-container'><div class='main-container1'>오늘의 스윙 통계</div><div class='main-container2'>82%</div></div>";
+                  listHtml += "<div class='mini-container'>스윙횟수</div>";
+                  listHtml += "<div class='mini-container'>평균점수</div>";
+                  listHtml += "<div class='mini-container'>최고점수</div>";
+                  listHtml += "</div>";
+                  
+                  listHtml += "<div class='logData-memo'>";
+                  listHtml += "<div class='logData-memo-sub'>";
+                  listHtml += "<span class='logData-memo-title'>훈련내용</span><button onclick='MemoWrite()'>작성하기</button>";
+                  listHtml += "<div class='textarea'>";
+                  listHtml += "<textarea id='write' type='text' value='아아아' readonly></textarea>";
+                  listHtml += "</div>";
+                  listHtml += "</div>"
+                  listHtml += "<div class='logData-memo-sub'>";
+                  listHtml += "<span class='logData-memo-title'>진단내용</span>";
+                  listHtml += "<div class='logData-picture'>오늘의 사진 넣어줘야함</div>";
+                  listHtml += "<div class='logData-coment'>피드백공간";
+                  listHtml += "</div>";
+                  listHtml += "</div>";
+                  listHtml += "</div>";
+                  
+                  listHtml += "<div class='back-button'><a href='${contextPath}/trainLog/${mvo.memID}'>뒤로가기</a></div>";
+                  listHtml += "</div>";
+                   
+                 $("#logData").html(listHtml);
+                 $("#logData").css("display","block");
                      
                       
                       
@@ -653,6 +683,29 @@
 			color: #AA1D20;
 			text-decoration: none;
 		}
+		
+		 .main-container1 {
+         float : left;
+         text-align : center;
+         vertical-align : middel;
+         width : 250px;
+         height : 100%;
+         font-size : 30px;
+         font-weight : 100;
+         margin-top : 5px;
+      }
+      
+      .main-container2 {
+         float : left;
+         text-align : center;
+         vertical-align : middel;
+         width : 127px;
+         height : 100%;
+         font-size : 40px;
+         color : #C7AA1D;
+         padding-bottom : 15px;
+      }
+		
 			
 	</style>
 
