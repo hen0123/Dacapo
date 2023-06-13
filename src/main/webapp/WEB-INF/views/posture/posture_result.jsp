@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>LineDrive</title>
 <link rel="stylesheet" href="resources/css/main.css">
+<script src="https://kit.fontawesome.com/2c815bad85.js" crossorigin="anonymous"></script>
 </head>
 <%@ page import="kr.spring.entity.*" %>
 <%

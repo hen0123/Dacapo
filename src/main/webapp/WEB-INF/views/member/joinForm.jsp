@@ -9,7 +9,7 @@
 <title>LineDrive</title>
 <link rel="stylesheet" href="resources/css/main.css">
 <script src="https://kit.fontawesome.com/e257908efc.js" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/2c815bad85.js" crossorigin="anonymous"></script>
 <style>
 @font-face {
     font-family: 'TheJamsil';

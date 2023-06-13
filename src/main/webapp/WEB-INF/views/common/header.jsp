@@ -10,7 +10,7 @@
 <title>LineDrive</title>
 <link rel="stylesheet" href="${contextPath}/resources/css/nav.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://kit.fontawesome.com/e257908efc.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/2c815bad85.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -40,6 +40,7 @@
 	      	<ul class="log">
 	        	<li class="login"><a href="${contextPath}/memberModify.do/${mvo.memID}"><i class="fa-regular fa-user fa-2x"></i></a></li>
 	      		<li class="login"><a href="${contextPath}/logout.do"><i class="fa-solid fa-right-from-bracket fa-2x"></i></a></li>
+	      		
 	      	</ul>
 	      </c:if>
 	</nav>

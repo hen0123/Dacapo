@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <title>LineDrive</title>
 <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
-<script src="https://kit.fontawesome.com/e257908efc.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/2c815bad85.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
 // 모달 열기
 $(document).on('click', '#add-btn', function (e) {

@@ -41,7 +41,7 @@
 
    <!-- CSS -->
    <link rel="stylesheet" href="${contextPath}/resources/css/nav.css">
-   <script src="https://kit.fontawesome.com/e257908efc.js" crossorigin="anonymous"></script>
+   <script src="https://kit.fontawesome.com/2c815bad85.js" crossorigin="anonymous"></script>
    
    <!-- fullcalendar 불러오기 -->
 
