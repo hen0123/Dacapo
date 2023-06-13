@@ -81,14 +81,6 @@ public class MemberController {
 					oldFile.delete();
 				}
 				
-				
-				
-				
-				
-				
-//				System.out.println(memID);
-//				System.out.println(newProfile);
-				
 				Member mvo = new Member();
 				mvo.setMemProfile(newProfile);
 				mvo.setMemID(memID);
@@ -139,11 +131,6 @@ public class MemberController {
 			
 			return "member/updateForm";
 		}
-		
-//		memberMapper.update(m);
-//		session.removeAttribute("mvo");
-//		session.setAttribute("mvo", m);
-//		return "redirect:/";
 		
 	}
 	
