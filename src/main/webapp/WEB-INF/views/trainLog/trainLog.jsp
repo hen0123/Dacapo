@@ -35,18 +35,18 @@
    <!-- 툴팁 옵션 -->
    <script src='https://unpkg.com/popper.js/dist/umd/popper.min.js'></script>
    <script src='https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js'></script>
-   
-   <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
-   <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
+
 
    <!-- CSS -->
    <link rel="stylesheet" href="${contextPath}/resources/css/nav.css">
-   <script src="https://kit.fontawesome.com/2c815bad85.js" crossorigin="anonymous"></script>
-   
-   <!-- fullcalendar 불러오기 -->
+   <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 
+   <!-- fontawesome -->
+   <script src="https://kit.fontawesome.com/2c815bad85.js" crossorigin="anonymous"></script>
+
+	<!-- fullcalendar 불러오기 -->
    <script type="text/javascript">
-      
+ 
         document.addEventListener('DOMContentLoaded', function() {
        var calendarEl = document.getElementById('calendar');
        var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -291,7 +291,6 @@
          
          dateClick: function(info) {
                
-            console.log("아이고");
                console.log(info.dateStr);
                
                dData = {"logDate" : info.dateStr, "memID" : "${mvo.memID}"};
@@ -338,7 +337,13 @@
                   listHtml += "</div>"
                   listHtml += "<div class='logData-memo-sub'>";
                   listHtml += "<span class='logData-memo-title'>진단내용</span>";
-                  listHtml += "<div class='logData-picture'>오늘의 사진 넣어줘야함</div>";
+                  listHtml += "<div class='logData-picture'>";
+                  listHtml += "<div><img src='${contextPath}/resources/images/샘플.jpg' /></div>";
+                  listHtml += "<div><img src='${contextPath}/resources/images/샘플2.jpg' /></div>";
+                  listHtml += "<div><img src='${contextPath}/resources/images/샘플3.jpg' /></div>";
+                  listHtml += "<div><img src='${contextPath}/resources/images/샘플4.jpg' /></div>";
+                  listHtml += "<div><img src='${contextPath}/resources/images/샘플5.jpg' /></div>";
+                  listHtml += "</div>";
                   listHtml += "<div class='logData-coment'>피드백공간";
                   listHtml += "</div>";
                   listHtml += "</div>";
@@ -377,12 +382,12 @@
        calendar.render();
      });
         
-        
+      new Swiper('.swiper-container');
+
    </script>
-   
 
    <style>
-   
+
       @font-face {
           font-family: 'LOTTERIADDAG';
           src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/LOTTERIADDAG.woff2') format('woff2');
@@ -658,8 +663,17 @@
       .logData-picture {
          widht : 100%;
          height: 200px;
-         background : gray;
+         background : #000000;
+         margin : 0 auto;
          margin-top : 10px;
+         text-align : center;
+      }
+      
+      .logData-picture img{
+         widht : 100px;
+         height: 200px;
+         margin : 0 auto;
+         float : left;
       }
       
       .logData-coment {
@@ -745,7 +759,31 @@
       	font-size : 28px;
       	font-weight : 300;
       }
-         
+      
+      /* 슬라이더 */
+      
+      .outer {
+		  border: 6px solid royalblue;
+		  width: 300px;
+		  height: 200px;
+		  margin: 0 auto;
+		  overflow-x: hidden;
+		}
+		
+		.inner-list {
+		  display: flex;
+		  transition: .3s ease-out;
+		  height: 100%;
+		}
+		
+		.inner {
+		  border: 6px solid olive;
+		  padding: 0 16px;
+		}
+		
+		.button-list {
+		  text-align: center;
+		}
    </style>
 
 
@@ -816,7 +854,23 @@
             </div>
         </div>
     </div>
-   
+    
+    <!-- 
+	<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+        	<img src="${contextPath}/resources/images/샘플.jpg">
+        </div>
+        <div class="swiper-slide">
+        	<img src="${contextPath}/resources/images/샘플2.jpg">
+        </div>
+        <div class="swiper-slide">
+        	<img src="${contextPath}/resources/images/샘플3.jpg">
+        </div>
+    </div>
+</div> -->
+	
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <!-- 훈련로그 창 -->
    <div id="logData" style="display: none;"></div>
    

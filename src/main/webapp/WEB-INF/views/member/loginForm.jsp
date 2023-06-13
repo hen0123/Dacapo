@@ -43,6 +43,9 @@ body {
 </script>
 <body>
 
+<!-- 로딩화면 -->
+<jsp:include page="../common/loading.jsp"></jsp:include>
+
 <!-- 바디 -->
 <div class="container">
 	<!-- 좌측 여백 -->

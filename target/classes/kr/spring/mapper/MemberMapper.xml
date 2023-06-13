@@ -31,7 +31,7 @@
 	
 	<!-- 최근 일자 불러오기 -->
      <select id="recentDate" parameterType="String" resultType="String">
-        select train_date from posture where memID = #{memID} limit 1;
+        select train_date from posture where memID = #{memID} order by train_date desc limit 1;
      </select>
      
      <!-- 전체 스윙 카운트 -->

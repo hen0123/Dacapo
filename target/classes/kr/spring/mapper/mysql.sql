@@ -3,6 +3,11 @@
 -- 오토인크리먼트는 프라이먼트이여만 한다.
 
 -- 로그 테이블 생성
+
+insert into posture(memID, video, TakeBack, Swing, Impact, FollowThrough, score, comment_1, comment_2, comment_3, comment_4, memo, train_date) 
+values('admin0581', 'asdasdasd', 'back', 'swing', 'impact', 'followthrough', 90, 'good1', 'good2', 'good3', 'good4', 'memo', '2023-06-13')
+select * from posture;
+
 -- 훈련 로그 테이블 생성
 create table log (
    logIdx int not null auto_increment,

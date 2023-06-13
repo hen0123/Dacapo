@@ -84,7 +84,7 @@ p {
 </div><br><br>
 
 <!-- 하단 테이블 -->
-<table style="border-radius: 15px; max-width: 850px; margin: auto; background-color: #EAEAEA">
+<table style="border-radius: 15px; max-width: 850px; margin: auto; background-color: #EAEAEA;">
 	<tr>
 		<th><p class="mini-title">회원정보</p></th>
 		<th><p class="mini-title">결제수단</p></th>

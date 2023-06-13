@@ -48,6 +48,7 @@ window.onload=function(){
 
 </head>
 <body>
+
 <!-- 헤더 -->
 <jsp:include page="../common/header.jsp"></jsp:include>
 

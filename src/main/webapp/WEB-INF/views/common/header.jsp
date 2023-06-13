@@ -47,50 +47,9 @@
 	
 	<div class="navblank">
 	</div>
-	<!-- navbar-de- -->
-	<!-- <nav class="navbar navbar-default">
-	  <div class="container-fluid">
-	    <div class="navbar-header">	
-	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>     
-	      </button>
-	      <a class="navbar-brand" href="${contextPath}">나의 스프링 홈페이지</a>
-	    </div>
-	    <div class="collapse navbar-collapse" id="myNavbar">
-	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="${contextPath}">Home</a></li>
-	      </ul>
-	      
-	      <c:if test="${empty mvo}">
-	      	<ul class="nav navbar-nav navbar-right">
-	        	<li><a href="${contextPath}/joinForm.do"><span class="glyphicon glyphicon-user"></span>회원가입</a></li>
-	        	<li><a href="${contextPath}/loginForm.do"><span class="glyphicon glyphicon-log-in"></span>로그인</a></li>
-	      	</ul>
-	      </c:if>
-	      
-	      <c:if test="${not empty mvo}">
-	      	<ul class="nav navbar-nav navbar-right">
-	      		<li>
-	      			<c:if test="${mvo.memProfile ne ''}">
-		      			<img alt="" src="${contextPath}/resources/upload/${mvo.memProfile}" class="img-circle" style="width: 50px; height: 50px;">
-		      			${mvo.memName}님 반갑습니다.
-		      		</c:if>
-		      		<c:if test="${mvo.memProfile eq ''}">	
-		      			<img alt="" src="${contextPath}/resources/images/기본.jpg" class="img-circle" style="width: 50px; height: 50px;">
-		      			${mvo.memName}님 반갑습니다.
-		      		</c:if>	
-	      		</li>
-	        	<li><a href="${contextPath}/updateForm.do"><span class="glyphicon glyphicon-wrench"></span>회원정보수정</a></li>
-	        	<li><a href="${contextPath}/imageForm.do"><span class="glyphicon glyphicon-camera"></span>프로필사진등록</a></li>
-	      		<li><a href="${contextPath}/logout.do"><span class="glyphicon glyphicon-log-out"></span>로그아웃</a></li>
-	      	</ul>
-	      </c:if>
-	      
-	      
-	    </div>
-	  </div>
-	</nav>  -->
+	
+	<!-- 로딩화면 -->
+	<jsp:include page="/common/loading.jsp"></jsp:include>
+
 </body>
 </html>
